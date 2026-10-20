@@ -1,6 +1,6 @@
 import contextlib
 
-from feishu_workflows.core import config, db
+from quanttide_academy.core import config, db
 from tests.helpers import *
 
 

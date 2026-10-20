@@ -1,6 +1,6 @@
-from feishu_workflows.intent import roles, validate_roles
-from feishu_workflows.intent.item import render_card
-from feishu_workflows.intent.validate import validate, warnings
+from quanttide_academy.intent import roles, validate_roles
+from quanttide_academy.intent.item import render_card
+from quanttide_academy.intent.validate import validate, warnings
 from tests.helpers import *
 
 CFG = {

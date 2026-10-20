@@ -3,9 +3,9 @@ tags: [已阅]
 date: 2026-10-20
 ---
 
-# feishu-workflows 路线图
+# 实训基地工具箱路线图
 
-本文记录 `feishu-workflows` 的已完成状态与核心设计约定，在修改架构或上线验收前阅读；日常操作命令与硬性约束以 [AGENTS.md](AGENTS.md) 为准。  
+本文记录 `quanttide-academy-toolkit` 的已完成状态与核心设计约定，在修改架构或上线验收前阅读；日常操作命令与硬性约束以 [AGENTS.md](AGENTS.md) 为准。  
 
 ## 目标与现状
 

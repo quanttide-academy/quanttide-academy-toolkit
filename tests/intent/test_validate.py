@@ -1,9 +1,9 @@
 import datetime
 
-from feishu_workflows.core import paths
-from feishu_workflows.intent import names
-from feishu_workflows.intent.item import labels, render_card
-from feishu_workflows.intent.validate import validate
+from quanttide_academy.core import paths
+from quanttide_academy.intent import names
+from quanttide_academy.intent.item import labels, render_card
+from quanttide_academy.intent.validate import validate
 from tests.helpers import *
 
 CFG = {
@@ -48,9 +48,9 @@ def test_validator_ok_and_errors():
 
 def test_schema_embedded_in_prompt_matches():
     sc = json.loads(
-        (ROOT / "src" / "feishu_workflows" / "intent" / "schemas" / "topics.schema.json").read_text(encoding="utf-8")
+        (ROOT / "src" / "quanttide_academy" / "intent" / "schemas" / "topics.schema.json").read_text(encoding="utf-8")
     )
-    pr = (ROOT / "src" / "feishu_workflows" / "intent" / "prompts" / "classify.md").read_text(encoding="utf-8")
+    pr = (ROOT / "src" / "quanttide_academy" / "intent" / "prompts" / "classify.md").read_text(encoding="utf-8")
     emb = json.loads(pr.split("```json", 1)[1].split("```", 1)[0])
     assert emb == sc
     assert (
@@ -97,7 +97,7 @@ def test_schema_embedded_in_prompt_matches():
 
 def test_labels_exactly_priority_name():
     cfg = yaml.safe_load(
-        (ROOT / "src" / "feishu_workflows" / "core" / "config.example.yaml").read_text(encoding="utf-8")
+        (ROOT / "src" / "quanttide_academy" / "core" / "config.example.yaml").read_text(encoding="utf-8")
     )
     cfg["labels"] = {"priority_names": PN}
     for p in PN:
@@ -122,7 +122,7 @@ def test_near_deadline_priority_warning(env):
 
 
 def test_prompt_kind_rule_prefers_task():
-    pr = (ROOT / "src" / "feishu_workflows" / "intent" / "prompts" / "classify.md").read_text(encoding="utf-8")
+    pr = (ROOT / "src" / "quanttide_academy" / "intent" / "prompts" / "classify.md").read_text(encoding="utf-8")
     assert "征集意见" in pr and "拿不准时写 `task`" in pr and "通知、公告" in pr
 
 

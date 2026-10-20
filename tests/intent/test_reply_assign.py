@@ -1,6 +1,6 @@
 import time
 
-from feishu_workflows.intent.reply_parse import parse_reply
+from quanttide_academy.intent.reply_parse import parse_reply
 from tests.helpers import *
 
 

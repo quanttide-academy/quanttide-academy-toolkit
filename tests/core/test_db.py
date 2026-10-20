@@ -1,7 +1,7 @@
 import contextlib
 import sqlite3
 
-from feishu_workflows.core import db
+from quanttide_academy.core import db
 from tests import conftest
 from tests.helpers import *
 

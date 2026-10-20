@@ -2,12 +2,12 @@ import hashlib
 import hmac
 import re
 
-from feishu_workflows import settings
-from feishu_workflows.core import lark as larkcli
-from feishu_workflows.org import writer
+from quanttide_academy import settings
+from quanttide_academy.core import lark as larkcli
+from quanttide_academy.org import writer
 from tests.helpers import *
 
-SRC = ROOT / "src" / "feishu_workflows"
+SRC = ROOT / "src" / "quanttide_academy"
 SPLIT_FILES = set(
     "cli/__init__.py cli/common.py cli/doctor.py cli/next_step.py setup/__init__.py setup/questions.py setup/apply.py intent/reply_parse.py intent/reply_handle.py intent/reply_assign.py intent/item_text.py intent/item_people.py intent/item_render.py".split()
 )
@@ -157,7 +157,7 @@ def test_packaging_and_entry_points():
     )
     pp = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert (
-        'feishu-workflows = "feishu_workflows.cli:entry"' in pp
+        'feishu-workflows = "quanttide_academy.cli:entry"' in pp
         and 'where = ["src"]' in pp
         and '"*.db"' in pp
         and '"config.yaml"' in pp
@@ -181,7 +181,7 @@ def test_org_writer_not_imported_by_intent_and_no_silent_except():
     assert [
         str(p.relative_to(ROOT))
         for p in (SRC / "intent").rglob("*.py")
-        if "feishu_workflows.org" in p.read_text(encoding="utf-8") or "lark_writer" in p.read_text(encoding="utf-8")
+        if "quanttide_academy.org" in p.read_text(encoding="utf-8") or "lark_writer" in p.read_text(encoding="utf-8")
     ] == []
     bad = [
         f"{p.name}:{i}"
@@ -228,7 +228,7 @@ def test_feishu_writes_only_in_org_writer_and_only_via_approved_plan():
         for t in [p.read_text(encoding="utf-8")]
         if feishu_write.search(t)
         or (
-            re.search(r"org(\.| import )writer|from feishu_workflows\.org\.writer|import writer", t)
+            re.search(r"org(\.| import )writer|from quanttide_academy\.org\.writer|import writer", t)
             and rel != "org/apply.py"
         )
     ]
@@ -265,7 +265,7 @@ def test_no_message_sending_and_coverage_and_commit_guards():
         (ROOT / "scripts" / "commit.sh").read_text(encoding="utf-8"),
     )
     assert (
-        'source = ["src/feishu_workflows"]' in pp
+        'source = ["src/quanttide_academy"]' in pp
         and "fail_under = 80" in pp
         and "omit" not in pp
         and "git status --short" in cs

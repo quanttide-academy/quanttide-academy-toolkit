@@ -1,6 +1,6 @@
-from feishu_workflows.intent.collect import msg_link
-from feishu_workflows.intent.item_render import card_version, render_archive, render_card, to_card, to_markdown
-from feishu_workflows.intent.item_text import FIELDS, sanitize_quote
+from quanttide_academy.intent.collect import msg_link
+from quanttide_academy.intent.item_render import card_version, render_archive, render_card, to_card, to_markdown
+from quanttide_academy.intent.item_text import FIELDS, sanitize_quote
 from tests.helpers import *
 
 

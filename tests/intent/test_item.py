@@ -1,5 +1,5 @@
-from feishu_workflows.intent import item
-from feishu_workflows.intent.item import render_card
+from quanttide_academy.intent import item
+from quanttide_academy.intent.item import render_card
 from tests.helpers import *
 
 

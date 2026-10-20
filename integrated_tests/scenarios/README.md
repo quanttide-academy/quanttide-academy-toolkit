@@ -2,7 +2,7 @@
 
 给一个干净的 Agent，只提供本仓库，不给额外说明。验收人按下面的脚本用自然语言和它对话，逐条核对「应产出」和「禁止出现」。全部使用 [tests/fixtures/](../examples/) 里的合成数据（虚构，不是真实群消息），不联网、不写任何待办。
 
-准备：复制一份 `src/feishu_workflows/core/config.example.yaml`，`paths` 指向临时目录，`todo.provider` 设为 `todoist`、`token_env` 设为一个未设置的变量名（这样只会生成 `writes.json`，不会真实写入）。用 `FEISHU_INTENT_CONFIG` 指向它。离线采集用 `feishu-workflows fetch <batch> --from tests/fixtures/messages.json`。
+准备：复制一份 `src/quanttide_academy/core/config.example.yaml`，`paths` 指向临时目录，`todo.provider` 设为 `todoist`、`token_env` 设为一个未设置的变量名（这样只会生成 `writes.json`，不会真实写入）。用 `FEISHU_INTENT_CONFIG` 指向它。离线采集用 `feishu-workflows fetch <batch> --from tests/fixtures/messages.json`。
 
 | **脚本** | **场景** |
 | :--- | :--- |

@@ -5,7 +5,7 @@ import types
 
 import pytest
 
-from feishu_workflows.org import writer as W
+from quanttide_academy.org import writer as W
 from tests.org.helpers import approve
 from tests.org.test_apply import runner, setup
 from tests.org.test_plan import cfg

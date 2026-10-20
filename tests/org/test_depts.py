@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from feishu_workflows.org import depts as D
+from quanttide_academy.org import depts as D
 from tests.org.test_plan import fake_big
 
 

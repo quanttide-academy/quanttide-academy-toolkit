@@ -4,11 +4,11 @@ import sqlite3
 
 import pytest
 
-from feishu_workflows.core import migrations
-from feishu_workflows.org import apply as AP
-from feishu_workflows.org import approve as A
-from feishu_workflows.org import plan as P
-from feishu_workflows.org import writer as W
+from quanttide_academy.core import migrations
+from quanttide_academy.org import apply as AP
+from quanttide_academy.org import approve as A
+from quanttide_academy.org import plan as P
+from quanttide_academy.org import writer as W
 from tests.org.helpers import approve
 from tests.org.test_plan import cfg, fake_big
 

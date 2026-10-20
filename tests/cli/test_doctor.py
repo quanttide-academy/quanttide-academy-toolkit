@@ -1,5 +1,5 @@
-from feishu_workflows import cli
-from feishu_workflows.cli.doctor import doctor, selftest
+from quanttide_academy import cli
+from quanttide_academy.cli.doctor import doctor, selftest
 from tests.helpers import *
 
 

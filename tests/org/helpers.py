@@ -4,8 +4,8 @@ import copy
 import json
 import time
 
-from feishu_workflows.org import approve as A
-from feishu_workflows.org import read as R
+from quanttide_academy.org import approve as A
+from quanttide_academy.org import read as R
 from tests.helpers import ROOT
 
 BASE = json.loads((ROOT / "tests" / "fixtures" / "org" / "tenant.json").read_text(encoding="utf-8"))

@@ -4,7 +4,7 @@ from pathlib import Path
 
 import yaml
 
-from feishu_workflows.watch import poll as P
+from quanttide_academy.watch import poll as P
 from tests.helpers import run
 from tests.watch.test_poll import raw
 

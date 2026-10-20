@@ -1,5 +1,5 @@
-from feishu_workflows.core.migrations import STATUS_V2
-from feishu_workflows.intent.status import ZH, label
+from quanttide_academy.core.migrations import STATUS_V2
+from quanttide_academy.intent.status import ZH, label
 
 
 def test_status_round_trip():

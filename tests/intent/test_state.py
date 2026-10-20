@@ -1,5 +1,5 @@
-from feishu_workflows.core import config
-from feishu_workflows.intent import state as fc
+from quanttide_academy.core import config
+from quanttide_academy.intent import state as fc
 from tests.helpers import *
 
 

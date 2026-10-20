@@ -1,4 +1,4 @@
-from feishu_workflows.cli import common
+from quanttide_academy.cli import common
 from tests.helpers import *
 
 

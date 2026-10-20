@@ -6,10 +6,10 @@ import time
 
 import pytest
 
-from feishu_workflows.core import migrations
-from feishu_workflows.org import apply as AP
-from feishu_workflows.org import approve as A
-from feishu_workflows.org import plan as P
+from quanttide_academy.core import migrations
+from quanttide_academy.org import apply as AP
+from quanttide_academy.org import approve as A
+from quanttide_academy.org import plan as P
 from tests.org.helpers import message
 from tests.org.test_plan import cfg, fake_big
 

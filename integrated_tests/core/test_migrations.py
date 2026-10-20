@@ -5,12 +5,12 @@ import json
 import sqlite3
 from pathlib import Path
 
-from feishu_workflows.core import migrations
-from feishu_workflows.org import approve as A
-from feishu_workflows.org import plan as P
-from feishu_workflows.watch import cursors as C
-from feishu_workflows.watch import poll as W
-from feishu_workflows.watch.targets import Target
+from quanttide_academy.core import migrations
+from quanttide_academy.org import approve as A
+from quanttide_academy.org import plan as P
+from quanttide_academy.watch import cursors as C
+from quanttide_academy.watch import poll as W
+from quanttide_academy.watch.targets import Target
 from tests.org.helpers import message
 from tests.org.test_plan import cfg as org_cfg
 from tests.org.test_plan import fake_big

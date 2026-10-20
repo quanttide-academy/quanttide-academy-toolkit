@@ -14,9 +14,9 @@ from pathlib import Path
 
 import yaml
 
-from feishu_workflows import cli
-from feishu_workflows.intent import names
-from feishu_workflows.settings import default_data_dir
+from quanttide_academy import cli
+from quanttide_academy.intent import names
+from quanttide_academy.settings import default_data_dir
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "data" / "work" / "e2e-6-10"

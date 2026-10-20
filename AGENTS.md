@@ -1,14 +1,14 @@
 # AGENTS.md
 
-本文是任何宿主 Agent（Grok Bot、Workbuddy、Trae、Cursor、Claude Code 等）运行本项目的唯一权威操作手册，与其他文件冲突时以本文为准；业务规则单一真源是 [src/feishu_workflows/intent/item.py](src/feishu_workflows/intent/item.py) 与 [src/feishu_workflows/intent/schemas/topics.schema.json](src/feishu_workflows/intent/schemas/topics.schema.json)。采用单人维护、约定式提交、审过直推 `main` 交付形态。
+本文是任何宿主 Agent（Grok Bot、Workbuddy、Trae、Cursor、Claude Code 等）运行本项目的唯一权威操作手册，与其他文件冲突时以本文为准；业务规则单一真源是 [src/quanttide_academy/intent/item.py](src/quanttide_academy/intent/item.py) 与 [src/quanttide_academy/intent/schemas/topics.schema.json](src/quanttide_academy/intent/schemas/topics.schema.json)。采用单人维护、约定式提交、审过直推 `main` 交付形态。
 
 ## 项目概述
 
-`feishu-workflows` 是架在飞书官方 `lark-cli`（已绑定应用 `Jerry 的 Grok Bot`）之上的安全工作流接驳包，提供群聊意图转待办（`intent`）、重点人员跨群/私聊跟踪（`watch`）与部门群聊对齐管理（`org`）三大工作流。
+`quanttide-academy-toolkit`（Python 包 `quanttide-academy` / `quanttide_academy`）是架在飞书官方 `lark-cli`（已绑定应用 `Jerry 的 Grok Bot`）之上的实训基地工具箱，提供群聊意图转待办（`intent`）、重点人员跨群/私聊跟踪（`watch`）与部门群聊对齐管理（`org`）三大工作流。
 
 ## 相关文档
 
-- [README.md](README.md)｜[CHANGELOG.md](CHANGELOG.md)｜[ROADMAP.md](ROADMAP.md)｜[src/feishu_workflows/core/config.example.yaml](src/feishu_workflows/core/config.example.yaml)｜[src/feishu_workflows/intent/prompts/classify.md](src/feishu_workflows/intent/prompts/classify.md)｜[integrated_tests/scenarios/README.md](integrated_tests/scenarios/README.md)
+- [README.md](README.md)｜[CHANGELOG.md](CHANGELOG.md)｜[ROADMAP.md](ROADMAP.md)｜[src/quanttide_academy/core/config.example.yaml](src/quanttide_academy/core/config.example.yaml)｜[src/quanttide_academy/intent/prompts/classify.md](src/quanttide_academy/intent/prompts/classify.md)｜[integrated_tests/scenarios/README.md](integrated_tests/scenarios/README.md)
 
 ## 快速定位
 
@@ -16,7 +16,7 @@
 | :--- | :--- | :--- |
 | 安装、首次设置、报错、退出码 3、Grok Bot | [README.md](README.md) | quick-start；常见异常与处理方式 |
 | watch、多目标监听、私聊来源、org、已知风险 | [ROADMAP.md](ROADMAP.md) | 设计约定（watch 多目标监听；私聊来源；org 部门与群对齐；已知风险） |
-| 识别、角色推断、办理人、topics.json | [src/feishu_workflows/intent/prompts/classify.md](src/feishu_workflows/intent/prompts/classify.md) | 识别任务（宿主大模型步骤，通用 prompt）（规则） |
+| 识别、角色推断、办理人、topics.json | [src/quanttide_academy/intent/prompts/classify.md](src/quanttide_academy/intent/prompts/classify.md) | 识别任务（宿主大模型步骤，通用 prompt）（规则） |
 | 验收场景、真实环境验收 | [integrated_tests/scenarios/README.md](integrated_tests/scenarios/README.md) | 验收脚本（上线前真实环境验收（需本人在场）） |
 
 ## 业务意图
@@ -52,23 +52,23 @@ graph LR
 ## 项目目录
 
 ```text
-feishu-workflows/
+quanttide-academy-toolkit/
 ├── README.md / AGENTS.md / ROADMAP.md / CHANGELOG.md / pyproject.toml / uv.lock
-├── src/feishu_workflows/    # 主包：cli/ setup/ core/（含 config.example.yaml） intent/ watch/ org/ settings.py
-├── tests/                   # 单元测试与仓库守卫（镜像 src）
-├── integrated_tests/        # 端到端集成测试、expected/ 固定期望与 scenarios/ 验收脚本
-└── scripts/                 # migrate.py、gen_hashes.py、commit.sh
+├── src/quanttide_academy/    # 主包：cli/ setup/ core/（含 config.example.yaml） intent/ watch/ org/ settings.py
+├── tests/                    # 单元测试与仓库守卫（镜像 src）
+├── integrated_tests/         # 端到端集成测试、expected/ 固定期望与 scenarios/ 验收脚本
+└── scripts/                  # migrate.py、gen_hashes.py、commit.sh
 ```
 
 ## 关键文件
 
 | **文件** | **职能** |
 | :--- | :--- |
-| [src/feishu_workflows/cli/__init__.py](src/feishu_workflows/cli/__init__.py) | `feishu-workflows` 主入口与退出码分发 |
-| [src/feishu_workflows/core/lark.py](src/feishu_workflows/core/lark.py) | 飞书 CLI 只读网关（仅放行 GET 与白名单命令） |
-| [src/feishu_workflows/core/migrations.py](src/feishu_workflows/core/migrations.py) | `state.db` 在线强制备份与 v1→v5 幂等迁移 |
-| [src/feishu_workflows/intent/item.py](src/feishu_workflows/intent/item.py) | 候选条目校验、角色推断与卡片渲染规则真源 |
-| [src/feishu_workflows/org/writer.py](src/feishu_workflows/org/writer.py) | 全仓唯一飞书写入点（仅执行已批准计划条目） |
+| [src/quanttide_academy/cli/__init__.py](src/quanttide_academy/cli/__init__.py) | `feishu-workflows` 主入口与退出码分发 |
+| [src/quanttide_academy/core/lark.py](src/quanttide_academy/core/lark.py) | 飞书 CLI 只读网关（仅放行 GET 与白名单命令） |
+| [src/quanttide_academy/core/migrations.py](src/quanttide_academy/core/migrations.py) | `state.db` 在线强制备份与 v1→v5 幂等迁移 |
+| [src/quanttide_academy/intent/item.py](src/quanttide_academy/intent/item.py) | 候选条目校验、角色推断与卡片渲染规则真源 |
+| [src/quanttide_academy/org/writer.py](src/quanttide_academy/org/writer.py) | 全仓唯一飞书写入点（仅执行已批准计划条目） |
 
 ## 常用命令
 

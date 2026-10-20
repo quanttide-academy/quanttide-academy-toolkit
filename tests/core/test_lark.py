@@ -1,5 +1,5 @@
-from feishu_workflows import settings
-from feishu_workflows.core import lark as larkcli
+from quanttide_academy import settings
+from quanttide_academy.core import lark as larkcli
 from tests.helpers import *
 
 

@@ -1,4 +1,4 @@
-from feishu_workflows.intent.outputs.todoist import PartialWrite, TodoistAdapter
+from quanttide_academy.intent.outputs.todoist import PartialWrite, TodoistAdapter
 from tests.helpers import *
 
 

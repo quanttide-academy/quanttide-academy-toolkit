@@ -1,5 +1,5 @@
-from feishu_workflows.core import config
-from feishu_workflows.intent import fetch as flow_fetch
+from quanttide_academy.core import config
+from quanttide_academy.intent import fetch as flow_fetch
 from tests.helpers import *
 
 

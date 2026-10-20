@@ -2,7 +2,7 @@
 
 import pytest
 
-from feishu_workflows.org import read as R
+from quanttide_academy.org import read as R
 
 
 def test_identities_and_get_only(monkeypatch):

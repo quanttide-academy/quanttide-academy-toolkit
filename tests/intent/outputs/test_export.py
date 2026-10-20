@@ -1,6 +1,6 @@
 import types
 
-from feishu_workflows.intent.outputs.export import ExportAdapter, csv_safe, ics_esc
+from quanttide_academy.intent.outputs.export import ExportAdapter, csv_safe, ics_esc
 from tests.helpers import *
 
 

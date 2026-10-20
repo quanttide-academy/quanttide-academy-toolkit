@@ -1,6 +1,6 @@
 import tempfile
 
-from feishu_workflows import settings
+from quanttide_academy import settings
 from tests.helpers import *
 
 

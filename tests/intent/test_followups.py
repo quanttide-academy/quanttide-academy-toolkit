@@ -1,7 +1,7 @@
 import contextlib
 
-from feishu_workflows.core import db
-from feishu_workflows.intent import followups
+from quanttide_academy.core import db
+from quanttide_academy.intent import followups
 from tests.helpers import *
 
 
@@ -43,5 +43,5 @@ def test_missing_followups_fails_loudly(env, tmp_path):
     Path(os.environ["FEISHU_INTENT_CONFIG"]).write_text(yaml.safe_dump(c, allow_unicode=True), encoding="utf-8")
     rc, r = run("next")
     assert rc == 1 and r["status"] == "fail" and "跟进清单读不到" in r["reason"]
-    src = (ROOT / "src" / "feishu_workflows" / "cli" / "__init__.py").read_text(encoding="utf-8")
+    src = (ROOT / "src" / "quanttide_academy" / "cli" / "__init__.py").read_text(encoding="utf-8")
     assert 'cfg["_followup_titles"]={}' not in src

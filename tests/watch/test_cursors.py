@@ -1,8 +1,8 @@
 import sqlite3
 
-from feishu_workflows.core import migrations
-from feishu_workflows.watch import cursors as C
-from feishu_workflows.watch.targets import Target
+from quanttide_academy.core import migrations
+from quanttide_academy.watch import cursors as C
+from quanttide_academy.watch.targets import Target
 
 
 def db(tmp_path):

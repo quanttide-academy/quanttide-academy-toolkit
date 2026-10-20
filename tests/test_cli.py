@@ -1,9 +1,9 @@
 import contextlib
 
-from feishu_workflows import cli as R
-from feishu_workflows.core import db
-from feishu_workflows.core import lark as larkcli
-from feishu_workflows.intent import collect
+from quanttide_academy import cli as R
+from quanttide_academy.core import db
+from quanttide_academy.core import lark as larkcli
+from quanttide_academy.intent import collect
 from tests.helpers import *
 
 

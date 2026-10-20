@@ -5,8 +5,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from feishu_workflows.core import config, migrations, paths
-from feishu_workflows.settings import default_data_dir
+from quanttide_academy.core import config, migrations, paths
+from quanttide_academy.settings import default_data_dir
 
 BackupFailed = migrations.BackupFailed
 backup = migrations.backup

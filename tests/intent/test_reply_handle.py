@@ -1,8 +1,8 @@
 import contextlib
 import re
 
-from feishu_workflows import cli as R
-from feishu_workflows.core import config, db
+from quanttide_academy import cli as R
+from quanttide_academy.core import config, db
 from tests.helpers import *
 
 
@@ -73,15 +73,15 @@ def test_confirm_all_invalid_after_change(env):
 
 
 def test_no_confirm_bypass(env):
-    src = (ROOT / "src" / "feishu_workflows" / "cli" / "__init__.py").read_text(encoding="utf-8")
+    src = (ROOT / "src" / "quanttide_academy" / "cli" / "__init__.py").read_text(encoding="utf-8")
     assert 'cmd=="confirm"' not in src and "confirmed=1" not in src
     hits = []
-    for p in sorted((ROOT / "src" / "feishu_workflows").rglob("*.py")):
+    for p in sorted((ROOT / "src" / "quanttide_academy").rglob("*.py")):
         for line in p.read_text(encoding="utf-8").splitlines():
             if re.search(r"set confirmed=1|confirmed_version=\?", line):
                 hits.append(p.name)
     assert hits == ["reply_handle.py"]
-    fl = (ROOT / "src" / "feishu_workflows" / "intent" / "reply_handle.py").read_text(encoding="utf-8")
+    fl = (ROOT / "src" / "quanttide_academy" / "intent" / "reply_handle.py").read_text(encoding="utf-8")
     assert fl.count("confirmed=1,confirmed_version=?") == 1 and fl.index("confirmed=1,confirmed_version=?") > fl.index(
         "def handle_reply"
     )

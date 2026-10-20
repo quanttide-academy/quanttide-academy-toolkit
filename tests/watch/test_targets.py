@@ -2,8 +2,8 @@ import sqlite3
 
 import pytest
 
-from feishu_workflows.core import migrations
-from feishu_workflows.watch import targets as T
+from quanttide_academy.core import migrations
+from quanttide_academy.watch import targets as T
 
 CFG = {
     "watch": [

@@ -1,5 +1,5 @@
-from feishu_workflows.core import db
-from feishu_workflows.intent import outputs
+from quanttide_academy.core import db
+from quanttide_academy.intent import outputs
 from tests.helpers import *
 
 

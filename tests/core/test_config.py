@@ -1,4 +1,4 @@
-from feishu_workflows.core import config
+from quanttide_academy.core import config
 from tests.helpers import *
 
 

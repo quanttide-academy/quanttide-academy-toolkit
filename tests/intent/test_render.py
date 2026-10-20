@@ -1,4 +1,4 @@
-from feishu_workflows.intent import render
+from quanttide_academy.intent import render
 from tests.helpers import *
 
 

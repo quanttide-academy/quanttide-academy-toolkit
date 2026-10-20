@@ -1,4 +1,4 @@
-from feishu_workflows.intent import names
+from quanttide_academy.intent import names
 from tests.helpers import *
 
 

@@ -14,8 +14,8 @@ from pathlib import Path
 import pytest
 import yaml
 
-from feishu_workflows import cli as R
-from feishu_workflows.intent.state import sanitize_text
+from quanttide_academy import cli as R
+from quanttide_academy.intent.state import sanitize_text
 
 __all__ = [
     "EX",

@@ -2,8 +2,8 @@
 
 import pytest
 
-from feishu_workflows.watch import dm
-from feishu_workflows.watch.targets import Target
+from quanttide_academy.watch import dm
+from quanttide_academy.watch.targets import Target
 
 T = Target("ou_a", "甲", {"ou_a": "内部", "ou_a2": "外部"}, dm=True, dm_chat="oc_dm_a")
 CFG = {"self_open_id": "ou_me"}

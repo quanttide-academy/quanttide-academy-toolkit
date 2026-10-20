@@ -11,9 +11,9 @@ from pathlib import Path
 import pytest
 import yaml
 
-from feishu_workflows.core import migrations
-from feishu_workflows.watch import cursors, poll, targets
-from feishu_workflows.watch.cli import _init
+from quanttide_academy.core import migrations
+from quanttide_academy.watch import cursors, poll, targets
+from quanttide_academy.watch.cli import _init
 
 ROOT = Path(__file__).resolve().parents[1]
 SCOPE = ROOT / "local" / "e2e-scope-A.json"

@@ -5,7 +5,7 @@ import sqlite3
 
 import pytest
 
-from feishu_workflows.core import migrations
+from quanttide_academy.core import migrations
 from tests.helpers import ROOT
 
 spec = importlib.util.spec_from_file_location("mig", ROOT / "scripts" / "migrate.py")

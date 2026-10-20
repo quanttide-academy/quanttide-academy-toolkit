@@ -1,4 +1,4 @@
-from feishu_workflows.intent import reply as flow_reply
+from quanttide_academy.intent import reply as flow_reply
 from tests.helpers import *
 
 

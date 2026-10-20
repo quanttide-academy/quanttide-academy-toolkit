@@ -3,7 +3,7 @@ import sqlite3
 
 import pytest
 
-from feishu_workflows.core import db, migrations
+from quanttide_academy.core import db, migrations
 from tests.helpers import ROOT
 
 OLD = (ROOT / "tests" / "fixtures" / "state_v0_schema.sql").read_text(encoding="utf-8")

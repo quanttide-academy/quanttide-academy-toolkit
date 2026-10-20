@@ -1,6 +1,6 @@
 import pytest
 
-from feishu_workflows.intent.outputs.base import Adapter
+from quanttide_academy.intent.outputs.base import Adapter
 
 
 def test_degrade_moves_unsupported_fields_to_note(tmp_path):
