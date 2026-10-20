@@ -40,7 +40,7 @@ def ms_to_utc(ms: int) -> str:
 
 
 def bj(ts):
-    return parse_ts(ts).astimezone(ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d %H:%M:%S（北京时间）")
+    return parse_ts(ts).astimezone(ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d %H:%M:%S") + "（北京时间）"
 
 
 def find(d, prefix, statuses):
