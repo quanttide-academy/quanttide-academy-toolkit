@@ -2,7 +2,7 @@
 
 本仓库是供 **Workbuddy / Grok Bot / Cursor** 直接加载安装的飞书工作流插件包（底层接驳飞书官方 `lark-cli` 已配好的 **`Jerry 的 Grok Bot`** 应用），承接群聊意图转待办（`intent`）、重点人员跨群与私聊跟踪（`watch`）、部门架构与群聊管理（`org`：拉人、踢人、设/撤管理员、改群名、转让群主、建群、解散群）三大协作流程。  
 
-> **全程零命令行**：你不需要自己打开终端敲命令。直接把本仓库作为插件/工作区装进 **Workbuddy**（或把 `README.md` / [AGENTS.md](AGENTS.md) 拖进对话框），全程在聊天窗口里用大白话操作即可。  
+> **全程零命令行**：你不需要自己打开终端敲命令。直接把本仓库作为插件/工作区装进 **Workbuddy 等 AI Agent中**（或把 `README.md` / [AGENTS.md](AGENTS.md) 拖进对话框），全程在聊天窗口里用大白话操作即可。  
 
 ## quick-start
 
