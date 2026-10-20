@@ -3,13 +3,13 @@ import hmac
 import re
 
 from feishu_workflows import settings
-from feishu_workflows.core import lark_reader as larkcli
+from feishu_workflows.core import lark as larkcli
 from feishu_workflows.org import writer
 from tests.helpers import *
 
 SRC = ROOT / "src" / "feishu_workflows"
 SPLIT_FILES = set(
-    "cli/__init__.py cli/common.py cli/doctor.py cli/next_step.py setup_wizard/__init__.py setup_wizard/questions.py setup_wizard/apply.py intent/reply_parse.py intent/reply_handle.py intent/reply_assign.py intent/item_text.py intent/item_people.py intent/item_render.py".split()
+    "cli/__init__.py cli/common.py cli/doctor.py cli/next_step.py setup/__init__.py setup/questions.py setup/apply.py intent/reply_parse.py intent/reply_handle.py intent/reply_assign.py intent/item_text.py intent/item_people.py intent/item_render.py".split()
 )
 
 
@@ -66,7 +66,7 @@ def test_feishu_client_read_only():
     larkcli.guard(("api", "GET", "/open-apis/im/v1/messages"))
     larkcli.guard(("im", "+chat-list", "--as", "user"))
     src = (SRC / "intent" / "names.py").read_text(encoding="utf-8")
-    assert "lark_reader" in src and "subprocess" not in src and "mobile" not in src and "email" not in src
+    assert "core import lark" in src and "subprocess" not in src and "mobile" not in src and "email" not in src
     bots = [q.name for q in SRC.rglob("*.py") for _ in re.findall(r'"--as",\s*"bot"', q.read_text(encoding="utf-8"))]
     assert sorted(bots) == ["names.py", "read.py", "read.py", "read.py"]
     bad = re.compile(
@@ -224,7 +224,7 @@ def test_feishu_writes_only_in_org_writer_and_only_via_approved_plan():
     hits = [
         rel
         for rel, p in all_src.items()
-        if rel not in ("org/writer.py", "core/lark_reader.py")
+        if rel not in ("org/writer.py", "core/lark.py")
         for t in [p.read_text(encoding="utf-8")]
         if feishu_write.search(t)
         or (
@@ -243,7 +243,7 @@ def test_feishu_writes_only_in_org_writer_and_only_via_approved_plan():
         and w.index("未获批准") < w.rindex("run(req)")
         and "WriterDisabled" in w
     )
-    assert "writer" not in plan and "lark_reader" not in plan
+    assert "writer" not in plan and "core.lark" not in plan
 
 
 def test_no_message_sending_and_coverage_and_commit_guards():

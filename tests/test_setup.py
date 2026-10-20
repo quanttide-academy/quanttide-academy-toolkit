@@ -1,11 +1,11 @@
 import contextlib
 import io
 
-from feishu_workflows import setup_wizard as S
+from feishu_workflows import setup as S
 from tests.helpers import *
 
 
-def test_setup_wizard_reexports_and_cli(tmp_path):
+def test_setup_reexports_and_cli(tmp_path):
     for name in ("QUESTIONS", "SECRET_RE", "apply", "ask", "main", "migrate", "prefill"):
         assert hasattr(S, name), name
     buf = io.StringIO()

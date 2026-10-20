@@ -1,4 +1,4 @@
-from feishu_workflows.setup_wizard.apply import apply, migrate, prefill
+from feishu_workflows.setup.apply import apply, migrate, prefill
 from tests.helpers import *
 
 

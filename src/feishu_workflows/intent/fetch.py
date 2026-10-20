@@ -4,7 +4,15 @@ import json
 
 from feishu_workflows.intent import names as _names
 from feishu_workflows.intent import roles
-from feishu_workflows.intent.flow_common import (
+from feishu_workflows.intent.item import (
+    card_version,
+    esc,
+    render_archive,
+    render_card,
+    resolve,
+)
+from feishu_workflows.intent.section import section
+from feishu_workflows.intent.state import (
     Invalid,
     _external,  # noqa: F401
     batch_items,
@@ -16,17 +24,9 @@ from feishu_workflows.intent.flow_common import (
     wd,
     wj,
 )
-from feishu_workflows.intent.item import (
-    card_version,
-    esc,
-    render_archive,
-    render_card,
-    resolve,
-)
 from feishu_workflows.intent.status import label
 from feishu_workflows.intent.validate import validate
 from feishu_workflows.intent.validate import warnings as _warn
-from feishu_workflows.intent.watch_view import section
 
 
 def fingerprint(it):

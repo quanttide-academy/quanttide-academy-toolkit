@@ -1,5 +1,5 @@
 """把 state.db 迁到最新表结构。先用 sqlite3 backup() 在线备份到 data/backup-state-<时间>.db，备份须能打开且 integrity_check=ok 才迁；运行锁非空则拒绝（migrate() 内检查）。可重复执行。
-用法：python scripts/migrate_state_db.py [state.db 路径]（省略则按 config.yaml 的 paths.state_db）"""
+用法：python scripts/migrate.py [state.db 路径]（省略则按 config.yaml 的 paths.state_db）"""
 
 import sys
 from pathlib import Path

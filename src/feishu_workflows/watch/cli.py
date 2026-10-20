@@ -4,7 +4,8 @@ poll 与 intent 共用整轮运行锁（同一时间只跑一轮）；只读拉�
 import time
 
 from feishu_workflows.core import db, paths
-from feishu_workflows.intent import flow_common, names
+from feishu_workflows.intent import names
+from feishu_workflows.intent import state as flow_common
 from feishu_workflows.watch import cursors, poll, targets
 
 USAGE = "用法：feishu-workflows watch targets|plan|poll <batch> [--dry-run]|commit <batch>|abort <batch>"

@@ -1,5 +1,5 @@
 from feishu_workflows import settings
-from feishu_workflows.core import lark_reader as larkcli
+from feishu_workflows.core import lark as larkcli
 from tests.helpers import *
 
 

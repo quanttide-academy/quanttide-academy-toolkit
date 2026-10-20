@@ -24,7 +24,7 @@ feishu-toolkit/
 ├── ROADMAP.md               # 架构设计与路线图约定
 ├── CHANGELOG.md             # 版本变更记录
 ├── pyproject.toml           # 包定义、依赖上界与 pytest/ruff 配置
-├── src/feishu_workflows/    # 核心源码（cli/ setup_wizard/ core/ intent/ watch/ org/）
+├── src/feishu_workflows/    # 核心源码（cli/ setup/ core/ intent/ watch/ org/）
 ├── tests/                   # 单元测试与仓库安全守卫
 ├── integrated_tests/        # 端到端集成测试与验收场景脚本
 └── scripts/                 # 状态库迁移、敏感词哈希生成与提交校验脚本

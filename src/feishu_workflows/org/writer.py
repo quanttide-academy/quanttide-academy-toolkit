@@ -5,7 +5,7 @@ import hashlib
 import json
 import subprocess
 
-from feishu_workflows.core.lark_reader import find
+from feishu_workflows.core.lark import find
 from feishu_workflows.org import conf as C
 from feishu_workflows.org.plan import EXTRA_KINDS
 

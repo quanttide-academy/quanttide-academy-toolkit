@@ -18,7 +18,7 @@ from feishu_workflows.intent.item_text import (
     remind_text,
     sanitize_quote,
 )
-from feishu_workflows.intent.watch_view import role_line
+from feishu_workflows.intent.section import role_line
 
 
 def render_archive(it, cfg=None):

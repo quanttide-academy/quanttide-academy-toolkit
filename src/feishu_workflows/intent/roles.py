@@ -2,7 +2,7 @@
 本人身份只按 open_id 匹配（config.self_open_id）；open_id 缺失的人永远不是本人。行动由程序推导：
 本人 ∈ 执行员 → 执行；∈ 评审员 → 评审；∈ 咨询对象 → 问询。跟进清单里本人是跟进人的事项，关联它的条目按评审员处理。"""
 
-from feishu_workflows.intent.watch_view import watched
+from feishu_workflows.intent.section import watched
 
 ACTIONS = ["执行", "评审", "问询", "指派"]
 ROLE_KEYS = (("assignees", "执行"), ("reviewers", "评审"), ("consultees", "问询"))

@@ -5,14 +5,14 @@ import datetime
 import json
 from zoneinfo import ZoneInfo
 
-from feishu_workflows.core import lark_reader as larkcli
+from feishu_workflows.core import lark as larkcli
 from feishu_workflows.core.config import TZ_NAME
-from feishu_workflows.intent.flow_common import (
+from feishu_workflows.intent.item_text import SELF_MARK, msg_link, text_of
+from feishu_workflows.intent.state import (
     THREAD_MAX,
     THREAD_TOTAL_MAX,
     trim_threads,
 )
-from feishu_workflows.intent.item_text import SELF_MARK, msg_link, text_of
 from feishu_workflows.watch import cursors, dm
 from feishu_workflows.watch.dm import DmUnavailable  # noqa: F401  对外暴露
 from feishu_workflows.watch.targets import owner

@@ -6,8 +6,8 @@ import re
 from zoneinfo import ZoneInfo
 
 from feishu_workflows.intent import validate_roles
-from feishu_workflows.intent.flow_common import sanitize_text
 from feishu_workflows.intent.item import FID, PERSON
+from feishu_workflows.intent.state import sanitize_text
 from feishu_workflows.settings import PKG
 
 SCHEMA = PKG / "intent" / "schemas" / "topics.schema.json"

@@ -2,7 +2,10 @@
 
 import json
 
-from feishu_workflows.intent.flow_common import (
+from feishu_workflows.intent.item import card_version
+from feishu_workflows.intent.reply_assign import assign, promote
+from feishu_workflows.intent.reply_parse import parse_reply
+from feishu_workflows.intent.state import (
     Invalid,
     batch_items,
     clean,
@@ -12,9 +15,6 @@ from feishu_workflows.intent.flow_common import (
     state,
     wd,
 )
-from feishu_workflows.intent.item import card_version
-from feishu_workflows.intent.reply_assign import assign, promote
-from feishu_workflows.intent.reply_parse import parse_reply
 
 
 def handle_reply(cfg, d, batch, text, quote=None):

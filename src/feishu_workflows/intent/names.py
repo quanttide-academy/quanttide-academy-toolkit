@@ -1,11 +1,11 @@
 """发言人姓名解析（只读）：先查群成员列表，查不到再查通讯录单个用户；结果只缓存 open_id→姓名，7 天过期。
-不存手机号、邮箱或其他字段；不打印令牌。所有调用经 lark_reader（只允许 GET）。"""
+不存手机号、邮箱或其他字段；不打印令牌。所有调用经 core/lark（只允许 GET）。"""
 
 import json
 import time
 from pathlib import Path
 
-from feishu_workflows.core import lark_reader as larkcli
+from feishu_workflows.core import lark as larkcli
 from feishu_workflows.core import paths
 
 TTL = 7 * 24 * 3600

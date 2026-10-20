@@ -10,8 +10,8 @@ import yaml
 from feishu_workflows.core import config
 from feishu_workflows.intent import collect, outputs
 from feishu_workflows.settings import PKG, ROOT
-from feishu_workflows.setup_wizard.apply import apply, migrate, prefill
-from feishu_workflows.setup_wizard.questions import QUESTIONS, SECRET_RE, ask
+from feishu_workflows.setup.apply import apply, migrate, prefill
+from feishu_workflows.setup.questions import QUESTIONS, SECRET_RE, ask
 
 __all__ = ["QUESTIONS", "SECRET_RE", "apply", "ask", "interactive", "main", "migrate", "prefill"]
 

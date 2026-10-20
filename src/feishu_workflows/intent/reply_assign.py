@@ -2,8 +2,9 @@
 
 import json
 
-from feishu_workflows.intent import flow_fetch, names, roles
-from feishu_workflows.intent.flow_common import (
+from feishu_workflows.intent import fetch as flow_fetch
+from feishu_workflows.intent import names, roles
+from feishu_workflows.intent.state import (
     Invalid,
     now,
     rj,

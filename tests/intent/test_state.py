@@ -1,5 +1,5 @@
 from feishu_workflows.core import config
-from feishu_workflows.intent import flow_common as fc
+from feishu_workflows.intent import state as fc
 from tests.helpers import *
 
 

@@ -10,7 +10,7 @@ from feishu_workflows import cli as run
 from feishu_workflows import settings
 from feishu_workflows.core import config, db
 from feishu_workflows.settings import PKG
-from feishu_workflows.setup_wizard.questions import SECRET_RE
+from feishu_workflows.setup.questions import SECRET_RE
 
 
 def apply(ans, target=None):

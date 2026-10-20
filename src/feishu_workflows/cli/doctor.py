@@ -12,7 +12,7 @@ import yaml
 
 from feishu_workflows import settings
 from feishu_workflows.cli.common import out
-from feishu_workflows.core import lark_reader as larkcli
+from feishu_workflows.core import lark as larkcli
 from feishu_workflows.core import paths
 
 

@@ -1,7 +1,8 @@
 """watch 多目标卡片：角色行只展示；行动按本人；对方 DDL 不进 deadline；合并批次按目标分节、序号全批连续。虚构数据。"""
 
-from feishu_workflows.intent import roles, watch_view
-from feishu_workflows.intent.flow_fetch import sections
+from feishu_workflows.intent import roles
+from feishu_workflows.intent import section as watch_view
+from feishu_workflows.intent.fetch import sections
 from feishu_workflows.intent.item import description, render_card
 from tests.helpers import *
 

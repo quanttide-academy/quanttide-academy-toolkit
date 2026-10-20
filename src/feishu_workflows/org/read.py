@@ -1,9 +1,9 @@
-"""org 只读层：部门树与部门成员用应用身份（--as bot），群信息与群成员用用户身份；全部 GET，经 core/lark_reader。
+"""org 只读层：部门树与部门成员用应用身份（--as bot），群信息与群成员用用户身份；全部 GET，经 core/lark。
 读不到部门（接口报错或返回空）一律抛 DeptReadError，绝不当成部门为空。"""
 
 import json
 
-from feishu_workflows.core import lark_reader as larkcli
+from feishu_workflows.core import lark as larkcli
 
 
 class DeptReadError(RuntimeError):

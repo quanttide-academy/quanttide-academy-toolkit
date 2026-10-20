@@ -4,7 +4,7 @@ import datetime
 import re
 
 from feishu_workflows.intent import roles as R
-from feishu_workflows.intent.flow_common import sanitize_text
+from feishu_workflows.intent.state import sanitize_text
 
 DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 PKEYS = {"name", "open_id", "basis", "evidence", "message_id"}

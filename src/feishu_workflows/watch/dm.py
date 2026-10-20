@@ -3,7 +3,7 @@
 
 import json
 
-from feishu_workflows.core import lark_reader as larkcli
+from feishu_workflows.core import lark as larkcli
 
 PERM = "im:message.p2p_msg:get_as_user"
 

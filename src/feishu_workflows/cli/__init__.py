@@ -26,13 +26,13 @@ from feishu_workflows.cli.next_step import next_step
 from feishu_workflows.core import config, db
 from feishu_workflows.intent import (
     collect,
-    flow_common,
-    flow_fetch,
-    flow_reply,
-    flow_write,
     followups,
     outputs,
 )
+from feishu_workflows.intent import fetch as flow_fetch
+from feishu_workflows.intent import reply as flow_reply
+from feishu_workflows.intent import state as flow_common
+from feishu_workflows.intent import write as flow_write
 from feishu_workflows.org import cli as org_cli
 from feishu_workflows.watch import cli as watch_cli
 from feishu_workflows.watch import cursors as _wc

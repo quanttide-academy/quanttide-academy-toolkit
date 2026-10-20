@@ -15,9 +15,7 @@ def connect(cfg):
     d = sqlite3.connect(str(path), timeout=30)
     if migrations.is_legacy(d) or (migrations.applied(d) and max(migrations.applied(d)) < migrations.LATEST):
         d.close()
-        raise NeedsMigration(
-            f"state.db 是旧版表结构，先运行：python scripts/migrate_state_db.py（会自动备份）。库：{path}"
-        )
+        raise NeedsMigration(f"state.db 是旧版表结构，先运行：python scripts/migrate.py（会自动备份）。库：{path}")
     if not migrations.applied(d):
         d.close()
         migrations.migrate(path)

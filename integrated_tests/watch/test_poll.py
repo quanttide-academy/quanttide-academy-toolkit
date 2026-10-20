@@ -12,7 +12,7 @@ import yaml
 
 from feishu_workflows import cli, settings
 from feishu_workflows.core import db
-from feishu_workflows.core import lark_reader as lr
+from feishu_workflows.core import lark as lr
 from feishu_workflows.intent import followups
 from tests.helpers import EX, PN, fake_lark_cli
 

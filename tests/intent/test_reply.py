@@ -1,4 +1,4 @@
-from feishu_workflows.intent import flow_reply
+from feishu_workflows.intent import reply as flow_reply
 from tests.helpers import *
 
 

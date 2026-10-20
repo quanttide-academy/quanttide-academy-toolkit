@@ -4,7 +4,7 @@ import datetime
 import json
 from zoneinfo import ZoneInfo
 
-from feishu_workflows.core import lark_reader as larkcli
+from feishu_workflows.core import lark as larkcli
 from feishu_workflows.core import paths
 from feishu_workflows.core.config import TZ_NAME
 from feishu_workflows.intent import names

@@ -59,7 +59,7 @@ def main():
     out = settings.sensitive_hashes_path()
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(
-        "# 真实姓名/群名/ID 的 HMAC-SHA256（明文与哈希均不入库），由 scripts/gen_sensitive_hashes.py 生成\n"
+        "# 真实姓名/群名/ID 的 HMAC-SHA256（明文与哈希均不入库），由 scripts/gen_hashes.py 生成\n"
         + "\n".join(hs)
         + "\n",
         encoding="utf-8",

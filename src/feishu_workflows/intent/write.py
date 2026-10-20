@@ -5,7 +5,6 @@ import json
 
 from feishu_workflows import settings
 from feishu_workflows.intent import outputs, roles
-from feishu_workflows.intent.flow_common import Invalid, batch_items, now, wd, wj
 from feishu_workflows.intent.item import (
     card_version,
     description,
@@ -13,6 +12,7 @@ from feishu_workflows.intent.item import (
     resolve,
     task_title,
 )
+from feishu_workflows.intent.state import Invalid, batch_items, now, wd, wj
 from feishu_workflows.settings import TZ_NAME
 
 PRI = {"P1": 4, "P2": 3, "P3": 2, "P4": 1}

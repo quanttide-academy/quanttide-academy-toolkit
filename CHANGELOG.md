@@ -14,7 +14,7 @@
   - 批准来源核验（`org/approve.py`）：只收本人在审批单聊发出的「批准 <id8>」消息 `message_id`，核验发送人、会话、24 小时窗口与文本，一次性登记（`org_approvals`）；`apply` 前重算计划、重新核验并打印批准时间（北京时间）。
   - 唯一飞书写入点（`org/writer.py`）：只接受已批准计划的 `(plan_id, 序号)`，写前后记录 `org_ops` 幂等日志；`org.enabled=false` 时不构造写客户端。
 - **读取层与测试设施**：
-  - `core/lark_reader.py` 抽出可注入 `SubprocessRunner`，同时检查 `ok` 与 `code`，JSON 提取支持整段解析与首尾花括号回退，`--page-all` 增加 `max_pages` 上限（超限或残留 `has_more` 报错）。
+  - `core/lark.py` 抽出可注入 `SubprocessRunner`，同时检查 `ok` 与 `code`，JSON 提取支持整段解析与首尾花括号回退，`--page-all` 增加 `max_pages` 上限（超限或残留 `has_more` 报错）。
   - 系统消息或空 `sender` 统一显示「（系统消息）」，不参与角色推断；支持 `thread_replies` 单话题 50 条、整批 500 条截断。
   - 新增跨平台 Python 假 `lark-cli`（记录 `argv.log`）与 `integrated_tests/` 端到端回归测试。
 
@@ -24,7 +24,7 @@
   - `intent` 的 `cursors`、`pending_cursors` 合并进 `watch_cursors`、`watch_pending_cursors` 并删除旧表；拉取起点统一为 `start=last_ts` 并按 `message_id` 去重（同秒消息分轮拉取不漏不重）。
   - 时间列声明为 `TIMESTAMP` 并带 `CHECK` 约束（统一毫秒级 `YYYY-MM-DDTHH:MM:SS.mmmZ`，读取兼容旧秒级 `Z` 与 `+08:00`），`org_approvals.sent_at` 转为 `TIMESTAMP`；布尔列声明为 `BOOLEAN` 并带 `CHECK(col IN (0, 1))`。
 - **代码结构与质量门禁**：
-  - 拆分 `cli/`、`setup_wizard/`、`intent/reply_{parse,handle,assign}.py`、`intent/item_{text,people,render}.py`，原导入路径保留兼容重导出，所有 Python 文件格式化后均少于 300 行。
+  - 拆分 `cli/`、`setup/`、`intent/reply_{parse,handle,assign}.py`、`intent/item_{text,people,render}.py`，原导入路径保留兼容重导出，所有 Python 文件格式化后均少于 300 行。
   - 敏感词哈希改用 HMAC-SHA256 移至本地 `local/sensitive_hashes.txt`（不入库）；开启 `pytest` 未关闭 SQLite 连接常驻守卫、`ResourceWarning` 报错与覆盖率门槛 `fail_under=80`。
 
 ## 0.1.0 — 基础版本

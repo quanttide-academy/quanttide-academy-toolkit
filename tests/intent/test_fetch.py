@@ -1,5 +1,5 @@
 from feishu_workflows.core import config
-from feishu_workflows.intent import flow_fetch
+from feishu_workflows.intent import fetch as flow_fetch
 from tests.helpers import *
 
 

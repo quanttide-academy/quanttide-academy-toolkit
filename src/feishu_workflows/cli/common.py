@@ -6,7 +6,7 @@ import re
 import sys
 
 from feishu_workflows.core import config, db
-from feishu_workflows.intent import flow_common
+from feishu_workflows.intent import state as flow_common
 
 try:
     sys.stdout.reconfigure(encoding="utf-8")

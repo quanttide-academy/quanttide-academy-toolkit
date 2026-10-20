@@ -4,7 +4,9 @@ import datetime
 
 from feishu_workflows.cli.common import BATCH_RE
 from feishu_workflows.core import db, paths
-from feishu_workflows.intent import flow_common, flow_reply, flow_write
+from feishu_workflows.intent import reply as flow_reply
+from feishu_workflows.intent import state as flow_common
+from feishu_workflows.intent import write as flow_write
 
 
 def next_step(cfg, d, batch=None):

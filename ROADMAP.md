@@ -11,7 +11,7 @@ date: 2026-10-20
 
 目标是把 intent、watch、org 三个工作流修完、打包并发版，达到可验收状态。架构是一个 Python 包 `src/feishu_workflows/{core,intent,watch,org}`，入口是 cli；读飞书只经 lark-cli 的 GET，飞书写操作只在 `org/writer.py`；状态存在 SQLite 的 `state.db`，迁移按版本号逐级执行。技术栈是 Python、uv、pytest、ruff、lark-cli、SQLite。  
 
-已完成 intent 全流程、watch、org v1.2、`state.db` v5（强制在线备份、TIMESTAMP 毫秒 Z 与 BOOLEAN CHECK、intent/watch 游标合并与同秒 `message_id` 去重）、可注入 Runner 与假 `lark-cli` 端到端回归、整仓 `ruff format` 与模块拆分（`cli/`、`setup_wizard/`、`reply_*`、`item_*`），总覆盖率与核心模块覆盖率均达标。  
+已完成 intent 全流程、watch、org v1.2、`state.db` v5（强制在线备份、TIMESTAMP 毫秒 Z 与 BOOLEAN CHECK、intent/watch 游标合并与同秒 `message_id` 去重）、可注入 Runner 与假 `lark-cli` 端到端回归、整仓 `ruff format` 与模块拆分（`cli/`、`setup/`、`reply_*`、`item_*`），总覆盖率与核心模块覆盖率均达标。  
 
 ## 设计约定
 

@@ -26,7 +26,7 @@
 ## 关键决策
 
 1. **逐条确认闸门**：仅认「`#N 写入`」、引用回复「`写入`」或「`全部写入` → `确认`」，原话原样交 `feishu-workflows reply`，防止误写待办。
-2. **飞书只读与唯一写入口**：`core/lark_reader.py` 仅放行 GET，全仓禁发飞书消息；仅 `org/writer.py` 可执行本人在审批单聊批准的群管理计划。
+2. **飞书只读与唯一写入口**：`core/lark.py` 仅放行 GET，全仓禁发飞书消息；仅 `org/writer.py` 可执行本人在审批单聊批准的群管理计划。
 3. **游标统一与同秒去重**：`intent` 与 `watch` 共用 `watch_cursors`/`watch_pending_cursors`，起点 `start=last_ts` 并按 `message_id` 去重，commit 才推进。
 4. **SQLite v5 严格类型与强制备份**：主键用 `INTEGER PRIMARY KEY`（等价 64 位 `BIGINT`，直接写 `BIGINT` 会使自增失效），时间列用毫秒级 `TIMESTAMP`（`YYYY-MM-DDTHH:MM:SS.mmmZ`），布尔列用 `BOOLEAN`；迁移前强制 `Connection.backup()` 并校验 `integrity_check=ok`。
 5. **外部消息零信任**：群聊和私聊内容先打码截断再交模型，识别阶段关闭写入工具，空 `sender` 显示「（系统消息）」且不参与角色推断。
@@ -54,10 +54,10 @@ graph LR
 ```text
 feishu-toolkit/
 ├── README.md / AGENTS.md / ROADMAP.md / CHANGELOG.md / pyproject.toml / uv.lock
-├── src/feishu_workflows/    # 主包：cli/ setup_wizard/ core/（含 config.example.yaml） intent/ watch/ org/ settings.py
+├── src/feishu_workflows/    # 主包：cli/ setup/ core/（含 config.example.yaml） intent/ watch/ org/ settings.py
 ├── tests/                   # 单元测试与仓库守卫（镜像 src）
 ├── integrated_tests/        # 端到端集成测试、expected/ 固定期望与 scenarios/ 验收脚本
-└── scripts/                 # migrate_state_db.py、gen_sensitive_hashes.py、commit.sh
+└── scripts/                 # migrate.py、gen_hashes.py、commit.sh
 ```
 
 ## 关键文件
@@ -65,7 +65,7 @@ feishu-toolkit/
 | **文件** | **职能** |
 | :--- | :--- |
 | [src/feishu_workflows/cli/__init__.py](src/feishu_workflows/cli/__init__.py) | `feishu-workflows` 主入口与退出码分发 |
-| [src/feishu_workflows/core/lark_reader.py](src/feishu_workflows/core/lark_reader.py) | 飞书 CLI 只读网关（仅放行 GET 与白名单命令） |
+| [src/feishu_workflows/core/lark.py](src/feishu_workflows/core/lark.py) | 飞书 CLI 只读网关（仅放行 GET 与白名单命令） |
 | [src/feishu_workflows/core/migrations.py](src/feishu_workflows/core/migrations.py) | `state.db` 在线强制备份与 v1→v5 幂等迁移 |
 | [src/feishu_workflows/intent/item.py](src/feishu_workflows/intent/item.py) | 候选条目校验、角色推断与卡片渲染规则真源 |
 | [src/feishu_workflows/org/writer.py](src/feishu_workflows/org/writer.py) | 全仓唯一飞书写入点（仅执行已批准计划条目） |
@@ -75,7 +75,7 @@ feishu-toolkit/
 - **环境与自检**：`uv sync && uv run feishu-workflows doctor --json && uv run feishu-workflows selftest --json`
 - **下一步路由**：`uv run feishu-workflows next --json`
 - **首次配置向导**：`uv run feishu-workflows-setup questions --json` → `chats --json` → `apply answers.json`
-- **状态库迁移**：`uv run python scripts/migrate_state_db.py`
+- **状态库迁移**：`uv run python scripts/migrate.py`
 - **修改验证**：`uv run pytest -q --cov && uv run pytest integrated_tests/core/test_migrations.py integrated_tests/watch/test_poll.py -v && uv run ruff check && uv run ruff format --check`
 
 ## 核心原则
