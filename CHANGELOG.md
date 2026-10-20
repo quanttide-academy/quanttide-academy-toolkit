@@ -8,7 +8,7 @@
   - 新目标默认回溯 7 天（`watch_options.backfill_days`，1～30）；支持目标限定 `chats`（须为 `scope.include_chats` 非空子集）。
   - 合并批次按监听对象分节（本人在前，`#N` 全批连续）；他人条目首行展示角色（仅展示），对方 DDL 只进描述不进 Todoist `deadline`。
   - 私聊来源（`watch/dm.py`，默认关闭）：每次拉取前现场只读核验 `p2p` 会话与成员（本人 + 目标账号），缺权限 `im:message.p2p_msg:get_as_user` 或核验失败整轮报错停止（退出码 1）。
-- **org 部门↔群对齐模块**（`src/feishu_workflows/org/`）：
+- **org 部门 ↔ 群对齐模块**（`src/feishu_workflows/org/`）：
   - 只读层（`org/read.py`）用应用身份（`--as bot`）读取部门树与部门成员，用户身份读取群信息；`org depts` 输出部门 ID 与映射建议至本地 `data/org_depts_suggest.md`。
   - 计划生成（`org/plan.py`）：部门只认 `department_id`；移出在前并标红；保护名单（本人、群主、程序账号、`org.protected`）三层兜底拦截；单群移出超过 30% 熔断；映射支持 `hold` + `hold_reason`（暂缓仅展示）。
   - 批准来源核验（`org/approve.py`）：只收本人在审批单聊发出的「批准 <id8>」消息 `message_id`，核验发送人、会话、24 小时窗口与文本，一次性登记（`org_approvals`）；`apply` 前重算计划、重新核验并打印批准时间（北京时间）。
