@@ -5,7 +5,6 @@ import types
 
 import pytest
 
-from feishu_workflows.core import lark as lark_reader
 from feishu_workflows.org import writer as W
 from tests.org.helpers import approve
 from tests.org.test_apply import runner, setup
@@ -69,7 +68,7 @@ def test_writer_runner_failure_logs_error_and_real_runner(tmp_path, monkeypatch)
     d, f, c, pl = setup(tmp_path)
     approve(c, d, f, pl)
     calls = []
-    monkeypatch.setattr(lark_reader, "find", lambda cfg: "/fake/lark-cli")
+    monkeypatch.setattr(W, "find", lambda cfg: "/fake/lark-cli")
 
     def fake_run(args, **kw):
         calls.append(args)
