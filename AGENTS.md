@@ -14,7 +14,7 @@
 
 | **关键词** | **文件** | **锚点** |
 | :--- | :--- | :--- |
-| 安装、首次设置、报错、退出码 3、Grok Bot | [README.md](README.md) | quick-start；报错秒查表 |
+| 安装、首次设置、报错、退出码 3、Grok Bot | [README.md](README.md) | quick-start；常见异常与处理方式 |
 | watch、多目标监听、私聊来源、org、已知风险 | [ROADMAP.md](ROADMAP.md) | 设计约定（watch 多目标监听；私聊来源；org 部门与群对齐；已知风险） |
 | 识别、角色推断、办理人、topics.json | [src/feishu_workflows/intent/prompts/classify.md](src/feishu_workflows/intent/prompts/classify.md) | 识别任务（宿主大模型步骤，通用 prompt）（规则） |
 | 验收场景、真实环境验收 | [integrated_tests/scenarios/README.md](integrated_tests/scenarios/README.md) | 验收脚本（上线前真实环境验收（需本人在场）） |
@@ -52,7 +52,7 @@ graph LR
 ## 项目目录
 
 ```text
-feishu-toolkit/
+feishu-workflows/
 ├── README.md / AGENTS.md / ROADMAP.md / CHANGELOG.md / pyproject.toml / uv.lock
 ├── src/feishu_workflows/    # 主包：cli/ setup/ core/（含 config.example.yaml） intent/ watch/ org/ settings.py
 ├── tests/                   # 单元测试与仓库守卫（镜像 src）

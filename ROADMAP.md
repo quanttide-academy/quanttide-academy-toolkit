@@ -3,7 +3,7 @@ tags: [已阅]
 date: 2026-10-20
 ---
 
-# feishu-toolkit 路线图
+# feishu-workflows 路线图
 
 本文记录 `feishu-workflows` 的已完成状态与核心设计约定，在修改架构或上线验收前阅读；日常操作命令与硬性约束以 [AGENTS.md](AGENTS.md) 为准。  
 
