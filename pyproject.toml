@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "feishu-workflows"
+version = "0.2.0"
+description = "飞书工作流：群聊意图转待办（intent），后续加入多人监听（watch）与组织调整（org）"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "pyyaml>=6,<7",
+  "tzdata>=2023.3,<2027",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<9", "pytest-cov>=5,<7", "ruff>=0.6,<1"]
+
+[project.scripts]
+feishu-workflows = "feishu_workflows.cli:entry"
+feishu-workflows-setup = "feishu_workflows.setup_wizard:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+feishu_workflows = ["core/*.sql", "core/*.yaml", "intent/prompts/*.md", "intent/schemas/*.json"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*.db", "config.yaml", "data/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src"]
+filterwarnings = [
+  "error::ResourceWarning",
+  "error::pytest.PytestUnraisableExceptionWarning",
+]
+
+[tool.coverage.run]
+source = ["src/feishu_workflows"]
+
+[tool.coverage.report]
+fail_under = 80
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "PLC0415"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["E731", "E741", "F403", "F405"]
+"scripts/**" = ["E402"]

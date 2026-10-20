@@ -1,0 +1,40 @@
+# 本地配置与运行数据（不入库）
+config.yaml
+*.db
+data/
+/data/
+local/
+local/sensitive_hashes.txt
+tests/fixtures/sensitive_hashes.txt
+followups-*.md
+work/
+candidates/
+runs-*.json
+confirmed.*
+schedule.*
+*.sqlite
+.env
+.env.*
+process.env
+~$*.docx
+dev-guide.md
+dev-log*
+# 个人资料与外部规范摘录（含个人信息，不入库）
+specs-ref/
+SPECS-digest.md
+# 工具与编辑器缓存
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.coverage
+.venv/
+*.egg-info/
+dist/
+build/
+node_modules/
+target/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

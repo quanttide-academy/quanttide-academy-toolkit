@@ -1,0 +1,5 @@
+{"_说明":"离线私聊夹具：本人 ou_me，目标 甲(ou_a) 与 丙(ou_c) 各一个私聊；全部为虚构 ID。",
+ "oc_dm_a":[{"message_id":"om_da1","create_time":"150000","sender":{"id":"ou_a","tenant_key":"t"},"body":{"content":"{\"text\":\"周五前把表给我\"}"},"message_position":"3"},
+            {"message_id":"om_da2","create_time":"160000","sender":{"id":"ou_me","tenant_key":"t"},"body":{"content":"{\"text\":\"好的\"}"},"message_position":"4"},
+            {"message_id":"om_da3","create_time":"170000","sender":{"id":"ou_zz","tenant_key":"t"},"body":{"content":"{\"text\":\"不该出现\"}"},"message_position":"5"}],
+ "oc_dm_c":[{"message_id":"om_dc1","create_time":"155000","sender":{"id":"ou_c","tenant_key":"t2"},"body":{"content":"{\"text\":\"明天开会\"}"},"message_position":"1"}]}

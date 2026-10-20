@@ -1,0 +1,123 @@
+{
+ "migrated_versions_from_v3": [
+  4,
+  5
+ ],
+ "idempotent_second_run": [],
+ "final_applied_versions": [
+  1,
+  2,
+  3,
+  4,
+  5
+ ],
+ "dropped_legacy_cursor_tables": [
+  "cursors",
+  "pending_cursors"
+ ],
+ "table_counts_before_and_after": {
+  "watched_chats": {
+   "before": 2,
+   "after": 2
+  },
+  "messages": {
+   "before": 3,
+   "after": 3
+  },
+  "topics": {
+   "before": 5,
+   "after": 5
+  },
+  "rejections": {
+   "before": 1,
+   "after": 1
+  },
+  "writes": {
+   "before": 1,
+   "after": 1
+  },
+  "write_actions": {
+   "before": 1,
+   "after": 1
+  },
+  "write_action_logs": {
+   "before": 1,
+   "after": 1
+  },
+  "reply_logs": {
+   "before": 1,
+   "after": 1
+  },
+  "watch_targets": {
+   "before": 1,
+   "after": 1
+  },
+  "watch_cursors": {
+   "before": 1,
+   "after": 2
+  },
+  "watch_pending_cursors": {
+   "before": 0,
+   "after": 1
+  }
+ },
+ "merged_watch_cursors": [
+  {
+   "target_key": "ou_demo_self",
+   "chat_id": "oc_1",
+   "last_ts": 500
+  },
+  {
+   "target_key": "ou_demo_self",
+   "chat_id": "oc_2",
+   "last_ts": 600
+  }
+ ],
+ "colleague_topics_preserved": [
+  {
+   "fingerprint": "om:om_colleague_1",
+   "title": "同事事项一",
+   "status": "pending",
+   "origin": "同事"
+  },
+  {
+   "fingerprint": "om:om_colleague_2",
+   "title": "同事事项二",
+   "status": "written",
+   "origin": "同事"
+  },
+  {
+   "fingerprint": "om:om_colleague_3",
+   "title": "同事事项三",
+   "status": "following",
+   "origin": "同事"
+  }
+ ],
+ "timestamp_samples_normalized": {
+  "topics_created_at": "2026-10-18T09:30:00.000Z",
+  "watched_chats_first_seen": "2026-10-18T01:00:00.000Z",
+  "org_approvals_sent_at": "2026-10-19T12:00:00.000Z"
+ },
+ "approval_window_24h_consistency": {
+  "within_24h_before": true,
+  "within_24h_after": true,
+  "expired_25h_before": "rejected",
+  "expired_25h_after": "rejected"
+ },
+ "same_second_two_rounds_poll": {
+  "round1_ids": [
+   "om_same_1"
+  ],
+  "round2_ids": [
+   "om_same_2"
+  ],
+  "cursor_after_round1": 150,
+  "cursor_after_round2": 150
+ },
+ "negative_cases": {
+  "lock_held_refused": "LockHeld",
+  "corrupt_or_missing_backup_refused": "BackupFailed",
+  "invalid_timestamp_check_rejected": "IntegrityError",
+  "invalid_boolean_check_rejected": "IntegrityError"
+ }
+}

@@ -1,0 +1,32 @@
+timezone: Asia/Shanghai            # 业务时间固定北京时间，不跟本机时区
+self_open_id: ou_xxx
+user: {display_name: 你的称呼, roles: []}   # 称呼替换 {display_name}；roles 用于「按角色推断」
+watch:
+  - name: 某人
+    accounts: {ou_aaa: 内部, ou_bbb: 外部}
+scope: {include_chats: []}            # 监听的群白名单（setup 勾选，默认不选）：[{chat_id, name, external}]
+initial_since: "2026-10-16"
+schedule: {fetch: ["11:30", "17:30"], push: ["12:00", "18:00"]}   # 北京时间
+todo: {provider: markdown, file: confirmed.md}   # markdown | todoist | export | custom
+calendar: {provider: none}                       # none | ics；google 仅限 bot 连接器模式（mode: connector）
+labels: {priority_names: {}}                     # 例：{P1: 紧急重要}；不配只显示 P1–P4
+followups: {path: null}                          # 外部跟进清单：Markdown 表格或 JSON [{id,title}]；卡片只显示标题，编号只留在存档；留空跳过
+lark_cli: {path: null}                           # 留空自动查找（Windows 会找到 lark-cli.cmd）
+paths: {}                                        # 留空用系统用户数据目录；可配 data_dir/state_db/candidates_dir/log_dir
+
+# org 模块（部门 ↔ 群对齐）：plan 只读；apply 须先由本人在审批单聊里发「批准 <计划ID前8位>」，且仅在 enabled: true 时才会构造写客户端。
+# 部门一律填 department_id（用 `feishu-workflows org depts` 只读列出 ID 与名字），不按名字匹配。chat_id 只写在本地 config。
+org:
+  enabled: false
+  root_department: od-REPLACE_ROOT        # 实训基地根部门的 department_id
+  allowed_departments: []                 # 只能在根部门之内再收窄
+  approval_chat_id: ""                    # 机器人与本人的单聊（本地填写；为空则无法批准）
+  mappings:                               # 暂缓：hold: true + hold_reason；解除暂缓属于配置变更，须本人确认
+    - {chat_id: oc_REPLACE_FOUNDER, department: od-REPLACE_FOUNDER, hold: true, hold_reason: 创始人部，组织调整未定}
+    - {chat_id: oc_REPLACE_SECRETARIAT, department: od-REPLACE_SECRETARIAT, hold: true, hold_reason: 秘书处，组织调整未定}
+    - {chat_id: oc_REPLACE_OPS, department: od-REPLACE_OPS, hold: true, hold_reason: 运营部，待审批结果}
+    - {chat_id: oc_REPLACE_GAMES, department: od-REPLACE_GAMES, hold: true, hold_reason: 游戏部，待审批结果}
+  protected: []                           # 额外保护名单（open_id）；本人、群主、app_open_id 自动保护
+  app_open_id: null
+  max_items: 20                           # 每批最多 20 条
+  allow: {create: false, disband: false, transfer: false}   # 默认关；打开后每条仍须单独批准

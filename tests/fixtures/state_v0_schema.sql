@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS watched_chats(chat_id TEXT PRIMARY KEY,name TEXT,first_seen TEXT,last_checked TEXT,active INTEGER DEFAULT 1);
+CREATE TABLE IF NOT EXISTS cursors(chat_id TEXT PRIMARY KEY,last_ts INTEGER);
+CREATE TABLE IF NOT EXISTS pending_cursors(batch TEXT,chat_id TEXT,last_ts INTEGER,PRIMARY KEY(batch,chat_id));
+CREATE TABLE IF NOT EXISTS messages(message_id TEXT PRIMARY KEY,chat_id TEXT,sender TEXT,ts INTEGER,text TEXT,topic_id INTEGER,batch TEXT,pushed INTEGER DEFAULT 0);
+CREATE TABLE IF NOT EXISTS topics(id INTEGER PRIMARY KEY AUTOINCREMENT,fingerprint TEXT UNIQUE,title TEXT,status TEXT,relation TEXT,todoist_id TEXT,sources TEXT,batch TEXT,note TEXT,origin TEXT,ext_id TEXT,keywords TEXT,confirmed INTEGER DEFAULT 0,confirmed_at TEXT,item_json TEXT);
+CREATE TABLE IF NOT EXISTS rejections(fingerprint TEXT PRIMARY KEY,title TEXT,reason TEXT,at TEXT);
+CREATE TABLE IF NOT EXISTS run_lock(name TEXT PRIMARY KEY,owner TEXT,expires INTEGER);
+CREATE TABLE IF NOT EXISTS writes(fingerprint TEXT PRIMARY KEY,provider TEXT,parent_id TEXT,subs_done TEXT,status TEXT,updated_at TEXT);
+CREATE TABLE IF NOT EXISTS write_actions(key TEXT PRIMARY KEY,batch TEXT,fingerprint TEXT,version TEXT,kind TEXT,idx INTEGER,payload TEXT,ext_id TEXT,status TEXT,updated_at TEXT);
+CREATE TABLE IF NOT EXISTS replies(id INTEGER PRIMARY KEY AUTOINCREMENT,batch TEXT,raw TEXT,parsed TEXT,versions TEXT,at TEXT);

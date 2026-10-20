@@ -1,0 +1,144 @@
+{
+ "items": [
+  {
+   "date_basis": null,
+   "ddl_basis": "原话「下周三周会前」",
+   "remind_basis": null,
+   "labels": [],
+   "refs": [],
+   "refs_reason": null,
+   "note": "示例数据",
+   "written": false,
+   "no": 1,
+   "title": "整理新成员培训手册并发到群里",
+   "summary": "示例：负责人点名{display_name}在下周三周会前整理培训手册。",
+   "kind": "task",
+   "task_type": "personal",
+   "assignees": [
+    {
+     "name": "示例用户",
+     "open_id": "ou_demo_self",
+     "basis": "quote",
+     "evidence": "请〔我〕 把新成员培训手册整理出来",
+     "message_id": "om_demo_1"
+    }
+   ],
+   "reviewers": [],
+   "consultees": [],
+   "review_criteria": null,
+   "ddl_by_person": [
+    {
+     "person": "示例用户",
+     "date": "2026-10-28",
+     "basis": "「下周三周会前」"
+    }
+   ],
+   "date": "2026-10-26",
+   "ddl": "2026-10-28",
+   "remind": "2026-10-26 10:00",
+   "priority": "P2",
+   "links": [
+    {
+     "message_id": "om_demo_1",
+     "quote": "下周三周会前，请〔我〕 把新成员培训手册整理出来"
+    },
+    {
+     "message_id": "om_demo_5",
+     "quote": "手册里请附上值班电话"
+    }
+   ],
+   "subtasks": [
+    "收集现有培训材料",
+    "起草手册",
+    "由{display_name}发到群里"
+   ]
+  },
+  {
+   "date_basis": null,
+   "ddl_basis": "原话「周五前」",
+   "remind_basis": null,
+   "labels": [],
+   "refs": [
+    "F1"
+   ],
+   "refs_reason": "原话「活动报名表请@小李 负责收集」与跟进事项 F1 是同一活动",
+   "note": "和秋季活动一起筹备",
+   "written": false,
+   "no": 2,
+   "title": "跟进活动报名表收集",
+   "summary": "示例：报名表由他人负责，本人盯进度。",
+   "kind": "task",
+   "task_type": "personal",
+   "assignees": [
+    {
+     "name": "小李",
+     "open_id": "ou_demo_li",
+     "basis": "quote",
+     "evidence": "活动报名表请@小李 负责收集",
+     "message_id": "om_demo_2"
+    }
+   ],
+   "reviewers": [
+    {
+     "name": "示例用户",
+     "open_id": "ou_demo_self",
+     "basis": "role",
+     "evidence": "示例负责人"
+    }
+   ],
+   "consultees": [],
+   "review_criteria": "报名表字段齐全、无重复",
+   "ddl_by_person": [
+    {
+     "person": "小李",
+     "date": "2026-10-23",
+     "basis": "「周五前交给我」"
+    }
+   ],
+   "date": "2026-10-22",
+   "ddl": "2026-10-23",
+   "remind": "2026-10-22 09:00",
+   "priority": "P3",
+   "links": [
+    {
+     "message_id": "om_demo_2",
+     "quote": "活动报名表请@小李 负责收集，周五前交给我。"
+    }
+   ],
+   "subtasks": [
+    "周四确认收集进度"
+   ]
+  },
+  {
+   "date_basis": "未指派、无时限",
+   "ddl_basis": "未指派、无时限",
+   "remind_basis": "无需提醒",
+   "labels": [],
+   "refs": [],
+   "refs_reason": null,
+   "note": null,
+   "written": false,
+   "no": 3,
+   "title": "阅读新出的行业报告",
+   "summary": "示例：只是信息分享，未指派。",
+   "kind": "info",
+   "task_type": null,
+   "assignees": [],
+   "reviewers": [],
+   "consultees": [],
+   "review_criteria": null,
+   "ddl_by_person": [],
+   "date": null,
+   "ddl": null,
+   "remind": null,
+   "priority": "P4",
+   "links": [
+    {
+     "message_id": "om_demo_3",
+     "quote": "大家有空可以看看新出的行业报告"
+    }
+   ],
+   "subtasks": []
+  }
+ ]
+}

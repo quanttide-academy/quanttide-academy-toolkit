@@ -1,0 +1,6 @@
+{"_说明":"离线 org 夹具：全部为编造的部门、群与成员 ID。",
+ "tree":[{"id":"od_root","name":"实训基地","parent":"0"},{"id":"od_a","name":"技术部","parent":"od_root"},{"id":"od_a1","name":"前端组","parent":"od_a"},
+         {"id":"od_f","name":"创始人部","parent":"od_root"},{"id":"od_x","name":"别的公司部门","parent":"0"}],
+ "members":{"od_root":["ou_me"],"od_a":["ou_a1","ou_a2","ou_a3"],"od_a1":["ou_a4"],"od_f":["ou_f1","ou_f2"],"od_x":["ou_x1"]},
+ "chats":{"oc_a":{"name":"技术部群","owner":"ou_me","members":{"ou_me":"t","ou_a1":"t","ou_a2":"t","ou_a3":"t","ou_old":"t","ou_ext":"t_other","ou_a5":"t","ou_a6":"t","ou_a7":"t","ou_a8":"t"}},
+          "oc_f":{"name":"创始人群","owner":"ou_me","members":{"ou_me":"t","ou_f1":"t","ou_zz":"t"}}}}

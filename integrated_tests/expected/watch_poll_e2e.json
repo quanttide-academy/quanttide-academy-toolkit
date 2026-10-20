@@ -1,0 +1,67 @@
+{
+ "scope_a_argv_endpoints": [
+  [
+   "api",
+   "GET",
+   "/open-apis/im/v1/messages"
+  ],
+  [
+   "api",
+   "GET",
+   "/open-apis/im/v1/messages"
+  ],
+  [
+   "api",
+   "GET",
+   "/open-apis/im/v1/chats/oc_demo/members"
+  ],
+  [
+   "api",
+   "GET",
+   "/open-apis/im/v1/chats/oc_ext/members"
+  ],
+  [
+   "api",
+   "GET",
+   "/open-apis/contact/v3/users/ou_demo_self"
+  ]
+ ],
+ "scope_b_argv_endpoints": [
+  [
+   "api",
+   "GET",
+   "/open-apis/im/v1/messages"
+  ],
+  [
+   "api",
+   "GET",
+   "/open-apis/im/v1/chats/oc_demo/members"
+  ],
+  [
+   "api",
+   "GET",
+   "/open-apis/contact/v3/users/ou_demo_self"
+  ]
+ ],
+ "all_commands_are_get": true,
+ "scope_a_versions": {
+  "1": {
+   "fingerprint": "om:om_demo_1",
+   "version": "be74e567fa8b"
+  },
+  "2": {
+   "fingerprint": "om:om_demo_2",
+   "version": "f35dfd465537"
+  }
+ },
+ "scope_b_versions": {
+  "1": {
+   "fingerprint": "om:om_demo_1",
+   "version": "be74e567fa8b"
+  }
+ },
+ "negative_cases": {
+  "write_command_blocked": "WriteBlocked",
+  "tampered_card_version_mismatch": true
+ }
+}
