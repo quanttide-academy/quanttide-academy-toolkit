@@ -10,10 +10,10 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from quanttide_academy import cli, settings
-from quanttide_academy.core import db
-from quanttide_academy.core import lark as lr
-from quanttide_academy.intent import followups
+from quanttide_academy_toolkit import cli, settings
+from quanttide_academy_toolkit.core import db
+from quanttide_academy_toolkit.core import lark as lr
+from quanttide_academy_toolkit.intent import followups
 from tests.helpers import EX, PN, fake_lark_cli
 
 ROOT = Path(__file__).resolve().parents[2]

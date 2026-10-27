@@ -3,7 +3,7 @@
 **验收人说**：「帮我把张总群里跟我有关的事整理成待办。」
 
 **应产出**
-- Agent 循环 `feishu-workflows next`：`fetch --from tests/fixtures/messages.json`（退出码 10）→ 按 `src/quanttide_academy/intent/prompts/classify.md` 写 `topics.json` → `validate` → `render` → 把 `cards.txt` 原样发出 → `pushed`。
+- Agent 循环 `feishu-workflows next`：`fetch --from tests/fixtures/messages.json`（退出码 10）→ 按 `src/quanttide_academy_toolkit/intent/prompts/classify.md` 写 `topics.json` → `validate` → `render` → 把 `cards.txt` 原样发出 → `pushed`。
 - `cards.txt` 有 #1、#2 两张卡；#3（办理人待定）只出现在「仅知悉」小节并标「办理人待定」；报告行为「与你无关、已归档 0 条，办理人待定 1 条。」；每条来源一行，om_demo_5 标「未能直跳」，其余标「待验证」。
 - 每张卡关键信息顺序为任务类型、执行员、评审员、咨询对象、（评审标准）、DDL、日期、截止、提醒、优先级、标签、行动；#1「行动：执行」，#2「行动：评审（按角色推断：示例负责人）」；没有「关系」行，没有逐卡的「回复：」行，全文最后只有一行「可以直接回复：写入、修改、说明或否决（可带序号）。」
 - 手机号显示为 `138****5678`，没有 `@` 提及，没有 `fi:`、`<!--`。

@@ -15,9 +15,9 @@ from pathlib import Path
 import pytest
 import yaml
 
-from quanttide_academy import cli as R
-from quanttide_academy.cli.doctor import freshen_fixture_dates
-from quanttide_academy.intent.state import sanitize_text
+from quanttide_academy_toolkit import cli as R
+from quanttide_academy_toolkit.cli.doctor import freshen_fixture_dates
+from quanttide_academy_toolkit.intent.state import sanitize_text
 
 __all__ = [
     "EX",

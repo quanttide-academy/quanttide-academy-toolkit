@@ -1,6 +1,6 @@
 import types
 
-from quanttide_academy.intent.outputs.export import ExportAdapter, csv_safe, ics_esc
+from quanttide_academy_toolkit.intent.outputs.export import ExportAdapter, csv_safe, ics_esc
 from tests.helpers import *
 
 

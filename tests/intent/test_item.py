@@ -1,5 +1,5 @@
-from quanttide_academy.intent import item
-from quanttide_academy.intent.item import render_card
+from quanttide_academy_toolkit.intent import item
+from quanttide_academy_toolkit.intent.item import render_card
 from tests.helpers import *
 
 

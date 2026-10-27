@@ -1,9 +1,9 @@
 """watch 多目标卡片：角色行只展示；行动按本人；对方 DDL 不进 deadline；合并批次按目标分节、序号全批连续。虚构数据。"""
 
-from quanttide_academy.intent import roles
-from quanttide_academy.intent import section as watch_view
-from quanttide_academy.intent.fetch import sections
-from quanttide_academy.intent.item import description, render_card
+from quanttide_academy_toolkit.intent import roles
+from quanttide_academy_toolkit.intent import section as watch_view
+from quanttide_academy_toolkit.intent.fetch import sections
+from quanttide_academy_toolkit.intent.item import description, render_card
 from tests.helpers import *
 
 CFG = {

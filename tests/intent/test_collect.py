@@ -1,8 +1,8 @@
 import contextlib
 
-from quanttide_academy.core import db
-from quanttide_academy.intent import collect
-from quanttide_academy.watch import poll
+from quanttide_academy_toolkit.core import db
+from quanttide_academy_toolkit.intent import collect
+from quanttide_academy_toolkit.watch import poll
 from tests.helpers import *
 
 
@@ -140,6 +140,6 @@ def test_collect_fetches_through_watch_single_path(monkeypatch, tmp_path):
         and "target" not in rep["messages"][0]
         and rep["messages"][0]["link"].startswith("https://")
     )
-    assert "/open-apis/im/v1/messages" not in (ROOT / "src" / "quanttide_academy" / "intent" / "collect.py").read_text(
-        encoding="utf-8"
-    )
+    assert "/open-apis/im/v1/messages" not in (
+        ROOT / "src" / "quanttide_academy_toolkit" / "intent" / "collect.py"
+    ).read_text(encoding="utf-8")

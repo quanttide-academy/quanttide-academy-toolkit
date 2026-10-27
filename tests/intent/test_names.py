@@ -1,4 +1,4 @@
-from quanttide_academy.intent import names
+from quanttide_academy_toolkit.intent import names
 from tests.helpers import *
 
 

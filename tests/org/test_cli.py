@@ -3,8 +3,8 @@
 import json
 import sqlite3
 
-from quanttide_academy.core import migrations
-from quanttide_academy.org import cli as O
+from quanttide_academy_toolkit.core import migrations
+from quanttide_academy_toolkit.org import cli as O
 from tests.org.helpers import message
 from tests.org.test_plan import cfg, fake_big
 

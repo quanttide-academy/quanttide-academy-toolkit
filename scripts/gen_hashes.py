@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
-from quanttide_academy import settings
+from quanttide_academy_toolkit import settings
 
 ID = re.compile(r"\b(?:oc|ou|om|on)_[0-9A-Za-z]{16,}\b")
 

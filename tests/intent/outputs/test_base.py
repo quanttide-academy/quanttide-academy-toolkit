@@ -1,6 +1,6 @@
 import pytest
 
-from quanttide_academy.intent.outputs.base import Adapter
+from quanttide_academy_toolkit.intent.outputs.base import Adapter
 
 
 def test_degrade_moves_unsupported_fields_to_note(tmp_path):

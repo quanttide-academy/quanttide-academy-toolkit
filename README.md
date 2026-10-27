@@ -1,13 +1,15 @@
 # 实训基地工具箱
 
-本仓库是供 **Workbuddy / Grok Bot / Cursor 等 AI Agent** 直接加载安装的实训基地工具箱（`quanttide-academy-toolkit`，底层接驳飞书官方 `lark-cli` 已配好的 **`Jerry 的 Grok Bot`** 应用），承接群聊意图转待办（`intent`）、重点人员跨群与私聊跟踪（`watch`）、部门架构与群聊管理（`org`：拉人、踢人、设/撤管理员、改群名、转让群主、建群、解散群）三大协作流程。  
+**飞书协作接驳**（`intent` / `watch` / `org`）
+
+本仓库是供 **Workbuddy / Grok Bot / Cursor 等 AI Agent** 直接加载安装的实训基地工具箱（GitHub 仓库与 Python 包都叫 `quanttide-academy-toolkit`，导入名 `quanttide_academy_toolkit`）。当前接驳通道是飞书：底层走官方 `lark-cli` 已配好的 **`Jerry 的 Grok Bot`** 应用，承接群聊意图转待办（`intent`）、重点人员跨群与私聊跟踪（`watch`）、部门架构与群聊管理（`org`：拉人、踢人、设/撤管理员、改群名、转让群主、建群、解散群）。资产类型仍是工具箱；以后若接入其他通道，仍收在这同一套里。命令入口仍是 `feishu-workflows` 与 `feishu-workflows-setup`。  
 
 > **全程零命令行**：你不需要自己打开终端敲命令。直接把本仓库作为插件/工作区装进 **Workbuddy 等 AI Agent中**（或把 `README.md` / [AGENTS.md](AGENTS.md) 拖进对话框），全程在聊天窗口里用大白话操作即可。  
 
 ## quick-start
 
 1. **装入 Workbuddy 并自动初始化**：在 Workbuddy 中打开本仓库，发送 **「按 [AGENTS.md](AGENTS.md) 帮我安装环境并初始化配置」**；Workbuddy 会自动装好依赖并弹出飞书二维码，你只需扫码选择 **「使用已有应用」→ 选 `Jerry 的 Grok Bot`**，再扫码点一次个人账号「授权」。
-2. **对话式完成首次设置**：授权后对 Workbuddy 说 **「第一次用，帮我设置一下」**（AI 会按 [src/quanttide_academy/core/config.example.yaml](src/quanttide_academy/core/config.example.yaml) 在对话框里问你称呼、拉出你的群供勾选白名单、询问待办存哪里）。
+2. **对话式完成首次设置**：授权后对 Workbuddy 说 **「第一次用，帮我设置一下」**（AI 会按 [src/quanttide_academy_toolkit/core/config.example.yaml](src/quanttide_academy_toolkit/core/config.example.yaml) 在对话框里问你称呼、拉出你的群供勾选白名单、询问待办存哪里）。
 3. **日常直接在对话框吩咐 AI**：设置完成后，按 [integrated_tests/scenarios/README.md](integrated_tests/scenarios/README.md) 或下方场景表直接发消息使用。
 
 ## 环境与跨平台
@@ -49,15 +51,15 @@ uv run feishu-workflows doctor --json
 
 ```text
 quanttide-academy-toolkit/
-├── README.md                 # 工具箱简介、Workbuddy 零命令上手与对话示例
-├── AGENTS.md                 # Workbuddy / AI Agent 自动执行的唯一权威指令手册
-├── ROADMAP.md                # 架构设计与路线图约定
-├── CHANGELOG.md              # 版本变更记录
-├── pyproject.toml            # Python 包（quanttide-academy）、命令入口与依赖配置
-├── src/quanttide_academy/    # 核心源码（cli/ setup/ core/ intent/ watch/ org/）
-├── tests/                    # 单元测试与仓库安全守卫
-├── integrated_tests/         # 端到端集成测试与验收场景脚本
-└── scripts/                  # 状态库迁移、敏感词哈希生成与提交校验脚本
+├── README.md                      # 工具箱简介、Workbuddy 零命令上手与对话示例
+├── AGENTS.md                      # Workbuddy / AI Agent 自动执行的唯一权威指令手册
+├── ROADMAP.md                     # 架构设计与路线图约定
+├── CHANGELOG.md                   # 版本变更记录
+├── pyproject.toml                 # Python 包（quanttide-academy-toolkit）、命令入口与依赖配置
+├── src/quanttide_academy_toolkit/ # 核心源码（cli/ setup/ core/ intent/ watch/ org/）
+├── tests/                         # 单元测试与仓库安全守卫
+├── integrated_tests/              # 端到端集成测试与验收场景脚本
+└── scripts/                       # 状态库迁移、敏感词哈希生成与提交校验脚本
 ```
 
 ## 核心场景与对话指令

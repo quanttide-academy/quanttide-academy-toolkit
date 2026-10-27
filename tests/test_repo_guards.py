@@ -2,12 +2,12 @@ import hashlib
 import hmac
 import re
 
-from quanttide_academy import settings
-from quanttide_academy.core import lark as larkcli
-from quanttide_academy.org import writer
+from quanttide_academy_toolkit import settings
+from quanttide_academy_toolkit.core import lark as larkcli
+from quanttide_academy_toolkit.org import writer
 from tests.helpers import *
 
-SRC = ROOT / "src" / "quanttide_academy"
+SRC = ROOT / "src" / "quanttide_academy_toolkit"
 SPLIT_FILES = set(
     "cli/__init__.py cli/common.py cli/doctor.py cli/next_step.py setup/__init__.py setup/questions.py setup/apply.py intent/reply_parse.py intent/reply_handle.py intent/reply_assign.py intent/item_text.py intent/item_people.py intent/item_render.py".split()
 )
@@ -157,7 +157,7 @@ def test_packaging_and_entry_points():
     )
     pp = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
     assert (
-        'feishu-workflows = "quanttide_academy.cli:entry"' in pp
+        'feishu-workflows = "quanttide_academy_toolkit.cli:entry"' in pp
         and 'where = ["src"]' in pp
         and '"*.db"' in pp
         and '"config.yaml"' in pp
@@ -181,7 +181,8 @@ def test_org_writer_not_imported_by_intent_and_no_silent_except():
     assert [
         str(p.relative_to(ROOT))
         for p in (SRC / "intent").rglob("*.py")
-        if "quanttide_academy.org" in p.read_text(encoding="utf-8") or "lark_writer" in p.read_text(encoding="utf-8")
+        if "quanttide_academy_toolkit.org" in p.read_text(encoding="utf-8")
+        or "lark_writer" in p.read_text(encoding="utf-8")
     ] == []
     bad = [
         f"{p.name}:{i}"
@@ -228,7 +229,7 @@ def test_feishu_writes_only_in_org_writer_and_only_via_approved_plan():
         for t in [p.read_text(encoding="utf-8")]
         if feishu_write.search(t)
         or (
-            re.search(r"org(\.| import )writer|from quanttide_academy\.org\.writer|import writer", t)
+            re.search(r"org(\.| import )writer|from quanttide_academy_toolkit\.org\.writer|import writer", t)
             and rel != "org/apply.py"
         )
     ]
@@ -265,7 +266,7 @@ def test_no_message_sending_and_coverage_and_commit_guards():
         (ROOT / "scripts" / "commit.sh").read_text(encoding="utf-8"),
     )
     assert (
-        'source = ["src/quanttide_academy"]' in pp
+        'source = ["src/quanttide_academy_toolkit"]' in pp
         and "fail_under = 80" in pp
         and "omit" not in pp
         and "git status --short" in cs

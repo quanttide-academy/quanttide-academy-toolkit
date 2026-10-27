@@ -1,7 +1,7 @@
 import contextlib
 
-from quanttide_academy.cli.next_step import next_step
-from quanttide_academy.core import config, db
+from quanttide_academy_toolkit.cli.next_step import next_step
+from quanttide_academy_toolkit.core import config, db
 from tests.helpers import *
 
 

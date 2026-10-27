@@ -1,6 +1,6 @@
 import tempfile
 
-from quanttide_academy import settings
+from quanttide_academy_toolkit import settings
 from tests.helpers import *
 
 

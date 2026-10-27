@@ -1,4 +1,4 @@
-from quanttide_academy.setup.apply import apply, migrate, prefill
+from quanttide_academy_toolkit.setup.apply import apply, migrate, prefill
 from tests.helpers import *
 
 

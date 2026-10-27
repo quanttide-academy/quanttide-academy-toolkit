@@ -6,10 +6,10 @@ import time
 
 import pytest
 
-from quanttide_academy.core import migrations
-from quanttide_academy.org import apply as AP
-from quanttide_academy.org import approve as A
-from quanttide_academy.org import plan as P
+from quanttide_academy_toolkit.core import migrations
+from quanttide_academy_toolkit.org import apply as AP
+from quanttide_academy_toolkit.org import approve as A
+from quanttide_academy_toolkit.org import plan as P
 from tests.org.helpers import message
 from tests.org.test_plan import cfg, fake_big
 

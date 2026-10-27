@@ -1,6 +1,6 @@
-from quanttide_academy.intent import roles
-from quanttide_academy.intent.item import render_card
-from quanttide_academy.intent.validate_roles import check
+from quanttide_academy_toolkit.intent import roles
+from quanttide_academy_toolkit.intent.item import render_card
+from quanttide_academy_toolkit.intent.validate_roles import check
 from tests.helpers import *
 
 CFG = {"self_open_id": "ou_me", "user": {"display_name": "小明"}, "labels": {"priority_names": PN}}

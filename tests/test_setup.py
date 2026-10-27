@@ -1,7 +1,7 @@
 import contextlib
 import io
 
-from quanttide_academy import setup as S
+from quanttide_academy_toolkit import setup as S
 from tests.helpers import *
 
 

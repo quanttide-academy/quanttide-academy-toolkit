@@ -1,7 +1,7 @@
 import pytest
 import yaml
 
-from quanttide_academy.org import conf as C
+from quanttide_academy_toolkit.org import conf as C
 from tests.helpers import ROOT
 from tests.org.helpers import cfg
 
@@ -39,7 +39,7 @@ def test_hold_needs_reason_and_old_keys_rejected():
 
 
 def test_example_config_holds_four_groups_not_congress():
-    t = (ROOT / "src" / "quanttide_academy" / "core" / "config.example.yaml").read_text(encoding="utf-8")
+    t = (ROOT / "src" / "quanttide_academy_toolkit" / "core" / "config.example.yaml").read_text(encoding="utf-8")
     oc = C.load(yaml.safe_load(t))
     held = [m for m in oc.mappings if m["hold"]]
     assert len(held) == 4 and all(m["hold_reason"] for m in held) and oc.enabled is False
