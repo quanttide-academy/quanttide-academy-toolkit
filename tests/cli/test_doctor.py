@@ -1,5 +1,5 @@
-from quanttide_academy import cli
-from quanttide_academy.cli.doctor import doctor, selftest
+from quanttide_academy_toolkit import cli
+from quanttide_academy_toolkit.cli.doctor import doctor, selftest
 from tests.helpers import *
 
 

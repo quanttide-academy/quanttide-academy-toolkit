@@ -2,9 +2,9 @@ import copy
 
 import pytest
 
-from quanttide_academy.org import conf as C
-from quanttide_academy.org import plan as P
-from quanttide_academy.org import read as R
+from quanttide_academy_toolkit.org import conf as C
+from quanttide_academy_toolkit.org import plan as P
+from quanttide_academy_toolkit.org import read as R
 from tests.org.helpers import Fake, cfg
 
 BIG = {

@@ -1,6 +1,6 @@
 import time
 
-from quanttide_academy.intent.reply_parse import parse_reply
+from quanttide_academy_toolkit.intent.reply_parse import parse_reply
 from tests.helpers import *
 
 

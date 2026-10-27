@@ -1,9 +1,9 @@
 import contextlib
 
-from quanttide_academy import cli as R
-from quanttide_academy.core import db
-from quanttide_academy.core import lark as larkcli
-from quanttide_academy.intent import collect
+from quanttide_academy_toolkit import cli as R
+from quanttide_academy_toolkit.core import db
+from quanttide_academy_toolkit.core import lark as larkcli
+from quanttide_academy_toolkit.intent import collect
 from tests.helpers import *
 
 

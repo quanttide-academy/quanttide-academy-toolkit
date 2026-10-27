@@ -2,8 +2,8 @@ import sqlite3
 
 import pytest
 
-from quanttide_academy.core import migrations
-from quanttide_academy.watch import targets as T
+from quanttide_academy_toolkit.core import migrations
+from quanttide_academy_toolkit.watch import targets as T
 
 CFG = {
     "watch": [

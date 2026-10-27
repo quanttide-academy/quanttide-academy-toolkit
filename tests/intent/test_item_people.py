@@ -1,8 +1,8 @@
-from quanttide_academy.intent import roles
-from quanttide_academy.intent.item_people import speaker_text
-from quanttide_academy.intent.item_render import render_card
-from quanttide_academy.intent.validate import validate
-from quanttide_academy.watch.poll import record
+from quanttide_academy_toolkit.intent import roles
+from quanttide_academy_toolkit.intent.item_people import speaker_text
+from quanttide_academy_toolkit.intent.item_render import render_card
+from quanttide_academy_toolkit.intent.validate import validate
+from quanttide_academy_toolkit.watch.poll import record
 from tests.helpers import *
 
 

@@ -1,8 +1,8 @@
 import sqlite3
 
-from quanttide_academy.core import migrations
-from quanttide_academy.watch import cursors as C
-from quanttide_academy.watch.targets import Target
+from quanttide_academy_toolkit.core import migrations
+from quanttide_academy_toolkit.watch import cursors as C
+from quanttide_academy_toolkit.watch.targets import Target
 
 
 def db(tmp_path):

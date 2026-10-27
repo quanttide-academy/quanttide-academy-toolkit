@@ -1,7 +1,7 @@
 import re
 
-from quanttide_academy.intent.item_render import description, render_archive, render_card
-from quanttide_academy.intent.validate import validate, warnings
+from quanttide_academy_toolkit.intent.item_render import description, render_archive, render_card
+from quanttide_academy_toolkit.intent.validate import validate, warnings
 from tests.helpers import *
 
 

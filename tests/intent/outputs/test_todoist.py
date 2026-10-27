@@ -1,4 +1,4 @@
-from quanttide_academy.intent.outputs.todoist import PartialWrite, TodoistAdapter
+from quanttide_academy_toolkit.intent.outputs.todoist import PartialWrite, TodoistAdapter
 from tests.helpers import *
 
 

@@ -1,6 +1,6 @@
-from quanttide_academy.intent import roles, validate_roles
-from quanttide_academy.intent.item import render_card
-from quanttide_academy.intent.validate import validate, warnings
+from quanttide_academy_toolkit.intent import roles, validate_roles
+from quanttide_academy_toolkit.intent.item import render_card
+from quanttide_academy_toolkit.intent.validate import validate, warnings
 from tests.helpers import *
 
 CFG = {

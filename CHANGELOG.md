@@ -1,5 +1,11 @@
 # 更新日志
 
+## 未发布
+
+### 破坏性变更
+- **安装名与导入名对齐工具箱命名**。PyPI / 项目名由 `quanttide-academy` 改为 `quanttide-academy-toolkit`，避免与领域仓库 `quanttide-academy` 撞名；导入包由 `quanttide_academy` 改为 `quanttide_academy_toolkit`（目录 `src/quanttide_academy/` 一并改名）。GitHub 仓库名、中文标题「实训基地工具箱」与命令入口 `feishu-workflows`、`feishu-workflows-setup` 保持不变。旧导入名不再保留兼容层，请直接改用新包名。
+- **定位**。飞书协作接驳（`intent` / `watch` / `org`）是当前通道。资产类型仍是工具箱；以后的非飞书工具也放在这一套里。
+
 ## 0.2.0 — 2026-10-20
 
 ### 新增

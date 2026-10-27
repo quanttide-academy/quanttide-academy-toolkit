@@ -1,4 +1,4 @@
-from quanttide_academy.core import paths
+from quanttide_academy_toolkit.core import paths
 from tests.helpers import *
 
 

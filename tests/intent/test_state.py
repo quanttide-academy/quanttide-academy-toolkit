@@ -1,5 +1,5 @@
-from quanttide_academy.core import config
-from quanttide_academy.intent import state as fc
+from quanttide_academy_toolkit.core import config
+from quanttide_academy_toolkit.intent import state as fc
 from tests.helpers import *
 
 

@@ -1,4 +1,4 @@
-from quanttide_academy.core import config
+from quanttide_academy_toolkit.core import config
 from tests.helpers import *
 
 

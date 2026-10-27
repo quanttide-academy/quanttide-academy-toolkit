@@ -1,4 +1,4 @@
-from quanttide_academy.cli import common
+from quanttide_academy_toolkit.cli import common
 from tests.helpers import *
 
 

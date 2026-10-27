@@ -1,19 +1,21 @@
 """假 lark-cli 端到端集成测试（跨 Windows/macOS/Linux，经 SubprocessRunner 启动真子进程）：
 每次调用的 argv 追加到临时目录的 argv.log；从 watch poll 跑到 validate → render → watch commit，
-断言 A、B 两组卡片版本号与入库的期望文件逐字节一致，且 argv.log 中命令行全是 GET。"""
+断言 A、B 两组版本文件与入库期望的指纹和 JSON 形状一致（卡片哈希含随今天平移的日期，不锁死字面值），
+且同一条卡片在 A、B 中的哈希相同，argv.log 中命令行全是 GET。"""
 
 import contextlib
 import datetime
 import json
+import re
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import yaml
 
-from quanttide_academy import cli, settings
-from quanttide_academy.core import db
-from quanttide_academy.core import lark as lr
-from quanttide_academy.intent import followups
+from quanttide_academy_toolkit import cli, settings
+from quanttide_academy_toolkit.core import db
+from quanttide_academy_toolkit.core import lark as lr
+from quanttide_academy_toolkit.intent import followups
 from tests.helpers import EX, PN, fake_lark_cli
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -23,9 +25,16 @@ EXPECTED_B = ROOT / "integrated_tests" / "expected" / "watch_e2e_scope_b.json"
 EXPECTED_REPORT = ROOT / "integrated_tests" / "expected" / "watch_poll_e2e.json"
 
 
-def _ts_ms(mm_dd_hh_mm: str) -> str:
-    dt = datetime.datetime.strptime("2026-" + mm_dd_hh_mm, "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
+def _ts_ms(hh_mm: str) -> str:
+    """钟点固定、日期取上海时区昨天，使消息始终落在默认 7 天回看窗口内。"""
+    day = datetime.datetime.now(TZ).date() - datetime.timedelta(days=1)
+    dt = datetime.datetime.strptime(f"{day.isoformat()} {hh_mm}", "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
     return str(int(dt.timestamp()) * 1000)
+
+
+def _mask_versions(raw: bytes) -> bytes:
+    """卡片版本含随今天平移的日期，哈希每天变；比对时只保留指纹和 JSON 形状。"""
+    return re.sub(rb'"version": "[0-9a-f]{12}"', b'"version": "<hash>"', raw)
 
 
 def _synthetic_chats() -> dict:
@@ -33,7 +42,7 @@ def _synthetic_chats() -> dict:
         "oc_demo": [
             {
                 "message_id": "om_demo_1",
-                "create_time": _ts_ms("10-19 10:00"),
+                "create_time": _ts_ms("10:00"),
                 "sender": {"id": "ou_boss"},
                 "message_position": "101",
                 "body": {
@@ -43,7 +52,7 @@ def _synthetic_chats() -> dict:
             },
             {
                 "message_id": "om_demo_2",
-                "create_time": _ts_ms("10-19 10:05"),
+                "create_time": _ts_ms("10:05"),
                 "sender": {"id": "ou_boss"},
                 "message_position": "102",
                 "body": {"content": json.dumps({"text": "活动报名表请@小李 负责收集，周五前交给@_user_1审核。"})},
@@ -51,14 +60,14 @@ def _synthetic_chats() -> dict:
             },
             {
                 "message_id": "om_demo_3",
-                "create_time": _ts_ms("10-19 10:10"),
+                "create_time": _ts_ms("10:10"),
                 "sender": {"id": "ou_boss"},
                 "message_position": "103",
                 "body": {"content": json.dumps({"text": "大家有空可以看看新出的行业报告，有想法随时交流。"})},
             },
             {
                 "message_id": "om_demo_5",
-                "create_time": _ts_ms("10-19 10:30"),
+                "create_time": _ts_ms("10:30"),
                 "sender": {"id": "ou_boss"},
                 "message_position": None,
                 "body": {
@@ -73,7 +82,7 @@ def _synthetic_chats() -> dict:
         "oc_ext": [
             {
                 "message_id": "om_demo_4",
-                "create_time": _ts_ms("10-19 10:20"),
+                "create_time": _ts_ms("10:20"),
                 "sender": {"id": "ou_boss"},
                 "message_position": "104",
                 "body": {
@@ -126,8 +135,9 @@ def _run_scope(tmp: Path, scope: str):
 def collect_watch_e2e_report(tmp_path: Path) -> dict:
     va_bytes, va_json, argvs_a = _run_scope(tmp_path / "a", "A")
     vb_bytes, vb_json, argvs_b = _run_scope(tmp_path / "b", "B")
-    assert va_bytes == EXPECTED_A.read_bytes()
-    assert vb_bytes == EXPECTED_B.read_bytes()
+    assert _mask_versions(va_bytes) == _mask_versions(EXPECTED_A.read_bytes())
+    assert _mask_versions(vb_bytes) == _mask_versions(EXPECTED_B.read_bytes())
+    assert va_json["1"]["version"] == vb_json["1"]["version"]
     all_get = all(a[:2] == ["api", "GET"] for a in [*argvs_a, *argvs_b])
     try:
         lr.call({}, "api", "POST", "/open-apis/im/v1/messages")
@@ -150,4 +160,6 @@ def collect_watch_e2e_report(tmp_path: Path) -> dict:
 def test_fake_lark_cli_watch_poll_to_render_ab_byte_identical(tmp_path):
     actual = collect_watch_e2e_report(tmp_path)
     expected = json.loads(EXPECTED_REPORT.read_text(encoding="utf-8"))
-    assert actual == expected
+    assert _mask_versions(json.dumps(actual, ensure_ascii=False, indent=1).encode()) == _mask_versions(
+        json.dumps(expected, ensure_ascii=False, indent=1).encode()
+    )

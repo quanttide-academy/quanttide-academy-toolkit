@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "quanttide-academy"
+name = "quanttide-academy-toolkit"
 version = "0.2.0"
-description = "量潮实训基地工具箱：群聊意图转待办（intent）、重点人员跟踪（watch）与组织群聊管理（org）"
+description = "量潮实训基地工具箱。当前接驳通道为飞书协作：群聊意图转待办（intent）、重点人员跟踪（watch）与组织群聊管理（org）"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -17,8 +17,8 @@ dependencies = [
 dev = ["pytest>=8,<9", "pytest-cov>=5,<7", "ruff>=0.6,<1"]
 
 [project.scripts]
-feishu-workflows = "quanttide_academy.cli:entry"
-feishu-workflows-setup = "quanttide_academy.setup:main"
+feishu-workflows = "quanttide_academy_toolkit.cli:entry"
+feishu-workflows-setup = "quanttide_academy_toolkit.setup:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -28,7 +28,7 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-quanttide_academy = ["core/*.sql", "core/*.yaml", "intent/prompts/*.md", "intent/schemas/*.json"]
+quanttide_academy_toolkit = ["core/*.sql", "core/*.yaml", "intent/prompts/*.md", "intent/schemas/*.json"]
 
 [tool.setuptools.exclude-package-data]
 "*" = ["*.db", "config.yaml", "data/*"]
@@ -42,7 +42,7 @@ filterwarnings = [
 ]
 
 [tool.coverage.run]
-source = ["src/quanttide_academy"]
+source = ["src/quanttide_academy_toolkit"]
 
 [tool.coverage.report]
 fail_under = 80

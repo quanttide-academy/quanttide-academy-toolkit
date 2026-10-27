@@ -1,5 +1,5 @@
-from quanttide_academy.core.migrations import STATUS_V2
-from quanttide_academy.intent.status import ZH, label
+from quanttide_academy_toolkit.core.migrations import STATUS_V2
+from quanttide_academy_toolkit.intent.status import ZH, label
 
 
 def test_status_round_trip():

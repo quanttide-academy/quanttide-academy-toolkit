@@ -1,5 +1,5 @@
-from quanttide_academy.core import db
-from quanttide_academy.intent import outputs
+from quanttide_academy_toolkit.core import db
+from quanttide_academy_toolkit.intent import outputs
 from tests.helpers import *
 
 

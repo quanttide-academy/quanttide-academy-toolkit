@@ -1,5 +1,5 @@
-from quanttide_academy import settings
-from quanttide_academy.core import lark as larkcli
+from quanttide_academy_toolkit import settings
+from quanttide_academy_toolkit.core import lark as larkcli
 from tests.helpers import *
 
 

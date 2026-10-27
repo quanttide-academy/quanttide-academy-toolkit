@@ -1,5 +1,5 @@
-from quanttide_academy.core import config
-from quanttide_academy.intent import fetch as flow_fetch
+from quanttide_academy_toolkit.core import config
+from quanttide_academy_toolkit.intent import fetch as flow_fetch
 from tests.helpers import *
 
 

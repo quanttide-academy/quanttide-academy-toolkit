@@ -3,10 +3,10 @@ import sqlite3
 
 import pytest
 
-from quanttide_academy.core import migrations
-from quanttide_academy.watch import cursors as C
-from quanttide_academy.watch import poll as P
-from quanttide_academy.watch.targets import Target
+from quanttide_academy_toolkit.core import migrations
+from quanttide_academy_toolkit.watch import cursors as C
+from quanttide_academy_toolkit.watch import poll as P
+from quanttide_academy_toolkit.watch.targets import Target
 from tests.helpers import ROOT
 
 TS = [Target("ou_a", "甲", {"ou_a": "内部", "ou_a2": "外部"}), Target("ou_b", "乙", {"ou_b": "内部"})]

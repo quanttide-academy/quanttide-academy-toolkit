@@ -5,10 +5,10 @@ import sqlite3
 
 import pytest
 
-from quanttide_academy.core import migrations
-from quanttide_academy.org import apply as AP
-from quanttide_academy.org import plan as P
-from quanttide_academy.org import writer as W
+from quanttide_academy_toolkit.core import migrations
+from quanttide_academy_toolkit.org import apply as AP
+from quanttide_academy_toolkit.org import plan as P
+from quanttide_academy_toolkit.org import writer as W
 from tests.org.test_plan import cfg, fake_big
 
 KINDS = ["remove_member", "unset_admin"]
