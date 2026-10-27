@@ -10,44 +10,40 @@
 2. **对话式完成首次设置**：授权后对 Workbuddy 说 **「第一次用，帮我设置一下」**（AI 会按 [src/quanttide_academy/core/config.example.yaml](src/quanttide_academy/core/config.example.yaml) 在对话框里问你称呼、拉出你的群供勾选白名单、询问待办存哪里）。
 3. **日常直接在对话框吩咐 AI**：设置完成后，按 [integrated_tests/scenarios/README.md](integrated_tests/scenarios/README.md) 或下方场景表直接发消息使用。
 
-## Windows 安装说明
+## 环境与跨平台
 
-本工具箱在 Windows / macOS / Linux 上均可运行（调用 `lark-cli` 不用 shell；Windows 会自动找到 `lark-cli.cmd`；定时任务可生成「任务计划程序」XML）。**仍建议优先走上方 quick-start**：把仓库交给 Workbuddy / Cursor 等 Agent，让它代装依赖；下面只写 Windows 本机需要你亲自备齐的部分。
+日常开发与验证以 **macOS** 和 **Linux** 为主。代码已按跨平台整理，Windows 也可以安装和使用：
 
-### 本机预装（PowerShell 或「命令提示符」）
+- 调用 `lark-cli` 不经过 shell；
+- Windows 上由 `shutil.which` 解析 `lark-cli.cmd`；
+- 路径一律使用 `pathlib`；
+- 定时任务可以生成 Windows「任务计划程序」XML。
 
-1. **Python 3.10+**（勾选 “Add python.exe to PATH”）与 **uv**（用于 `uv sync` / `uv run`）。
-2. **Node.js 20 LTS**（自带 `npm` / `npx`）。
-3. **飞书官方 lark-cli**（在已装好 Node 的终端执行）：
+macOS、Linux、Windows 使用同一组安装命令，差异见下方对照表。若由 Workbuddy / Cursor 等 Agent 代为准备依赖，仍可按上方 quick-start，在对话里完成扫码授权。
 
-   ```text
-   npx @larksuite/cli@latest install
-   ```
+### 安装与绑定
 
-   若提示找不到 `lark-cli`：把 npm 全局目录加入系统 PATH（可先跑 `npm root -g` 查看路径），**新开一个终端**再试 `lark-cli --version`。也可在 `config.yaml` 的 `lark_cli.path` 填 `lark-cli.cmd` 的完整路径。
+请先准备 **Python 3.10+**、**uv** 与 **Node.js 20 LTS**，再在终端依次执行：
 
-4. **绑定应用并授权**（勿新建空白应用）：
+```text
+npx @larksuite/cli@latest install
+lark-cli config init
+lark-cli auth login --recommend
+uv sync
+uv run feishu-workflows doctor --json
+```
 
-   ```text
-   lark-cli config init
-   ```
+`lark-cli config init` 时扫码选择 **「使用已有应用」→ `Jerry 的 Grok Bot`**。不要加 `--new`，也不要绑定空白应用。`doctor --json` 的结果中应有 `"config": true`，且 `lark_cli` 非空。
 
-   扫码选 **「使用已有应用」→ `Jerry 的 Grok Bot`**，再执行：
+### 平台差异
 
-   ```text
-   lark-cli auth login --recommend
-   ```
-
-5. 在仓库根目录：`uv sync`，再让 Agent 跑 `uv run feishu-workflows doctor --json`，确认 `"config": true` 且 `lark_cli` 非空。
-
-### Windows 注意
-
-| 项 | 说明 |
-| :-- | :-- |
-| 终端 | 用 **PowerShell** 即可；`scripts/commit.sh` 需 Git Bash 或 WSL，日常跑工作流不依赖它 |
-| 代理 | Clash 等导致黄字警告时，设环境变量 `LARK_CLI_NO_PROXY_WARN=1` 或 `LARK_CLI_NO_PROXY=1` |
-| 定时拉取 | Agent 可生成任务计划 XML；安装前须你确认，命令形如 `schtasks /Create /TN feishu-intent /XML <文件路径>` |
-| 路径 | 配置与数据路径用正斜杠或原始字符串均可；库内一律 `pathlib`，勿手写反斜杠拼接 |
+| 项 | macOS / Linux | Windows |
+| :-- | :-- | :-- |
+| 终端 | Terminal 等系统终端 | PowerShell |
+| 找不到 `lark-cli` | 确认已安装 Node.js 20 LTS，新开一个终端后再执行 `lark-cli --version` | `shutil.which` 会解析 `lark-cli.cmd`。仍找不到时，把 npm 全局目录加入 PATH（可先执行 `npm root -g`），或在 `config.yaml` 的 `lark_cli.path` 填写 `lark-cli.cmd` 的完整路径 |
+| 代理告警 | 设置 `LARK_CLI_NO_PROXY_WARN=1`（静默警告）或 `LARK_CLI_NO_PROXY=1`（强制直连飞书） | 同上 |
+| 定时拉取 | 按本机的调度方式执行 | 可生成任务计划 XML；安装前须本人确认，命令形如 `schtasks /Create /TN feishu-intent /XML <文件路径>` |
+| `scripts/commit.sh` | 在 shell 中运行 | 需要 Git Bash 或 WSL；日常工作流不依赖该脚本 |
 
 ## 仓库结构
 

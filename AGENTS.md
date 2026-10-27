@@ -15,7 +15,7 @@
 | **关键词** | **文件** | **锚点** |
 | :--- | :--- | :--- |
 | 安装、首次设置、报错、退出码 3、Grok Bot | [README.md](README.md) | quick-start；常见异常与处理方式 |
-| Windows 安装、`lark-cli.cmd` / PATH | [README.md](README.md) | 「Windows 安装说明」；本文「lark-cli 预检（含 Windows）」 |
+| 环境、跨平台、`lark-cli.cmd` / PATH | [README.md](README.md) | 「环境与跨平台」；本文「lark-cli 预检（跨平台）」 |
 | watch、多目标监听、私聊来源、org、已知风险 | [ROADMAP.md](ROADMAP.md) | 设计约定（watch 多目标监听；私聊来源；org 部门与群对齐；已知风险） |
 | 识别、角色推断、办理人、topics.json | [src/quanttide_academy/intent/prompts/classify.md](src/quanttide_academy/intent/prompts/classify.md) | 识别任务（宿主大模型步骤，通用 prompt）（规则） |
 | 验收场景、真实环境验收 | [integrated_tests/scenarios/README.md](integrated_tests/scenarios/README.md) | 验收脚本（上线前真实环境验收（需本人在场）） |
@@ -93,10 +93,10 @@ quanttide-academy-toolkit/
 
 ## 常见任务
 
-### lark-cli 预检（含 Windows）
+### lark-cli 预检（跨平台）
 
-- 运行时：Python 3.10+、Node.js 20+、`lark-cli` 1.x（官方：`npx @larksuite/cli@latest install`）。
-- Windows：`shutil.which` 会解析 `lark-cli.cmd`；找不到时请用户把 npm 全局目录加入 PATH，或在 `lark_cli.path` 填完整路径；细节见 [README.md](README.md)「Windows 安装说明」。
+- 运行时：Python 3.10+、Node.js 20+、`lark-cli` 1.x（官方：`npx @larksuite/cli@latest install`）。日常开发与验证以 macOS、Linux 为主；Windows 同样可用。
+- 三个平台都由 `shutil.which` 查找 `lark-cli`；Windows 上解析的是 `lark-cli.cmd`。找不到时请把 npm 全局目录加入 PATH，或在 `lark_cli.path` 填写完整路径。细节见 [README.md](README.md)「环境与跨平台」。
 - 绑定必须选已有应用 **`Jerry 的 Grok Bot`**（勿 `--new` / 勿空白应用）；再 `lark-cli auth login --recommend`。
 - Agent 不代用户登录飞书；本机预检失败时把 README 该节原文发给用户。
 

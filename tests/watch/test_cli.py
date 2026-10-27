@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from pathlib import Path
 
 import yaml
@@ -36,6 +37,7 @@ def test_targets_and_plan(env):
 def test_poll_commit_abort(env, monkeypatch):
     _cfg, tmp = env
     setcfg(W)
+    seen = int(time.time()) - 3600  # 落在默认 7 天回看窗口内
 
     def call(c, *a, **k):  # 同一个只读客户端：按路径分发
         assert a[:2] == ("api", "GET")
@@ -45,7 +47,7 @@ def test_poll_commit_abort(env, monkeypatch):
                     "code": 0,
                     "data": {
                         "items": [
-                            raw("m1", "ou_a", 1792400000, "请看 @_user_1", mentions=[{"id": "ou_b", "key": "@_user_1"}])
+                            raw("m1", "ou_a", seen, "请看 @_user_1", mentions=[{"id": "ou_b", "key": "@_user_1"}])
                         ]
                     },
                 }
@@ -64,7 +66,7 @@ def test_poll_commit_abort(env, monkeypatch):
     rc, r = run("watch", "commit", "w1")
     assert rc == 0
     rc, r = run("watch", "plan")
-    assert all(v == 1792400000 for v in r["chats"][0]["targets"].values())
+    assert all(v == seen for v in r["chats"][0]["targets"].values())
     rc, r3 = run("watch", "poll", "w3")
     assert rc == 10 and r3["counts"]["ou_a"] == 0
     rc, r = run("watch", "abort", "w3")

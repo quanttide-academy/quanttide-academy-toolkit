@@ -1,12 +1,14 @@
 """CLI 自检与离线自测：doctor 与 selftest。"""
 
 import contextlib
+import datetime
 import importlib
 import io
 import json
-import shutil
+import re
 import tempfile
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import yaml
 
@@ -14,6 +16,50 @@ from quanttide_academy import settings
 from quanttide_academy.cli.common import out
 from quanttide_academy.core import lark as larkcli
 from quanttide_academy.core import paths
+
+_DATE_PREFIX = re.compile(r"^(\d{4}-\d{2}-\d{2})(.*)$")
+
+
+def _collect_dates(obj, out):
+    if isinstance(obj, dict):
+        for v in obj.values():
+            _collect_dates(v, out)
+    elif isinstance(obj, list):
+        for v in obj:
+            _collect_dates(v, out)
+    elif isinstance(obj, str) and (m := _DATE_PREFIX.match(obj)):
+        try:
+            out.append(datetime.date.fromisoformat(m.group(1)))
+        except ValueError:
+            pass
+
+
+def _shift_dates(obj, delta):
+    if isinstance(obj, dict):
+        return {k: _shift_dates(v, delta) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [_shift_dates(v, delta) for v in obj]
+    if isinstance(obj, str) and (m := _DATE_PREFIX.match(obj)):
+        try:
+            day = datetime.date.fromisoformat(m.group(1)) + delta
+        except ValueError:
+            return obj
+        return day.isoformat() + m.group(2)
+    return obj
+
+
+def freshen_fixture_dates(data, *, lead_days=3):
+    """把示例 topics 里的 YYYY-MM-DD 平移到上海时区今天之后。
+
+    最早的日期落到今天 + lead_days，各字段间隔不变，使本应通过的 P3/P4 截止
+    不被「截止在 2 天内，优先级至少 P2」误伤。
+    """
+    found = []
+    _collect_dates(data, found)
+    if not found:
+        return data
+    today = datetime.datetime.now(ZoneInfo("Asia/Shanghai")).date()
+    return _shift_dates(data, (today + datetime.timedelta(days=lead_days)) - min(found))
 
 
 def doctor(cfg):
@@ -70,7 +116,10 @@ def selftest(main_fn=None):
 
     try:
         ok = call("fetch", b, "--from", str(root / "tests" / "fixtures" / "messages.json"))[0] == 10
-        shutil.copy(root / "tests" / "fixtures" / "topics.json", tmp / "work" / b / "topics.json")
+        raw = json.loads((root / "tests" / "fixtures" / "topics.json").read_text(encoding="utf-8"))
+        (tmp / "work" / b / "topics.json").write_text(
+            json.dumps(freshen_fixture_dates(raw), ensure_ascii=False), encoding="utf-8"
+        )
         rc, r = call("validate", b)
         steps[-1]["out"] = r
         if rc != 0:
