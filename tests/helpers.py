@@ -2,6 +2,7 @@
 
 import contextlib
 import copy
+import datetime
 import io
 import json
 import os
@@ -15,11 +16,14 @@ import pytest
 import yaml
 
 from quanttide_academy import cli as R
+from quanttide_academy.cli.doctor import freshen_fixture_dates
 from quanttide_academy.intent.state import sanitize_text
 
 __all__ = [
     "EX",
     "MSG",
+    "bump_date",
+    "load_topics",
     "PN",
     "ROOT",
     "SUBENV",
@@ -45,7 +49,19 @@ __all__ = [
 ROOT = Path(__file__).resolve().parent.parent  # 仓库根目录
 SUBENV = {**os.environ, "PYTHONPATH": str(ROOT / "src") + os.pathsep + os.environ.get("PYTHONPATH", "")}
 PN = {"P1": "紧急重要", "P2": "紧急次要", "P3": "缓和重要", "P4": "缓和次要"}
-EX = json.loads((ROOT / "tests" / "fixtures" / "topics.json").read_text(encoding="utf-8"))
+
+
+def load_topics(name="topics.json"):
+    raw = json.loads((ROOT / "tests" / "fixtures" / name).read_text(encoding="utf-8"))
+    return freshen_fixture_dates(raw)
+
+
+def bump_date(iso, days=1):
+    """把 YYYY-MM-DD 往后推一天（或若干天），避免用例写死已经过期的绝对日期。"""
+    return (datetime.date.fromisoformat(iso) + datetime.timedelta(days=days)).isoformat()
+
+
+EX = load_topics()
 MSG = json.loads((ROOT / "tests" / "fixtures" / "messages.json").read_text(encoding="utf-8"))
 
 

@@ -22,7 +22,7 @@ def test_modify_needs_rerender_and_unnumbered(env):
     with contextlib.closing(db.connect(config.load())) as d:
         assert R.next_step(config.load(), d, "b1")["step"] == "llm_edit"
     t = copy.deepcopy(EX)
-    t["items"][0]["ddl"] = "2026-10-30"
+    t["items"][0]["ddl"] = bump_date(t["items"][0]["ddl"])
     (tmp / "w" / "b1" / "topics.json").write_text(json.dumps(t, ensure_ascii=False), encoding="utf-8")
     _rc, r = run("reply", "b1", "#1 写入")
     assert r["actions"] == [] and "改过" in r["ask_user"]
@@ -64,7 +64,7 @@ def test_confirm_all_invalid_after_change(env):
     run("pushed", "b1")
     run("reply", "b1", "全部写入")
     t = copy.deepcopy(EX)
-    t["items"][0]["ddl"] = "2026-10-29"
+    t["items"][0]["ddl"] = bump_date(t["items"][0]["ddl"])
     (tmp / "w" / "b1" / "topics.json").write_text(json.dumps(t, ensure_ascii=False), encoding="utf-8")
     run("validate", "b1")
     run("render", "b1")

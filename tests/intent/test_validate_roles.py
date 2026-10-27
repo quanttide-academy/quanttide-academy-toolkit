@@ -132,7 +132,7 @@ def test_role_basis_and_mentions_rule():
 
 def test_counter_example_assign_card(env):
     cfg, tmp = env
-    t = json.loads((ROOT / "tests" / "fixtures" / "topics_counter.json").read_text(encoding="utf-8"))
+    t = load_topics("topics_counter.json")
     prepare(cfg, tmp, topics=t, messages="messages_counter.json")
     rc, r = run("validate", "b1")
     assert rc == 20 and "不能按角色推断" in r["reason"]

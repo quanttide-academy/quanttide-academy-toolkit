@@ -30,9 +30,10 @@ def test_flow_exit_codes_and_plan(env):
     p = acts[0]
     assert p["fingerprint"] == "om:om_demo_1" and p["version"] and len(p["key"]) == 16
     pl = p["payload"]
+    it0 = EX["items"][0]
     assert (
-        pl["due_date"] == "2026-10-26"
-        and pl["deadline_date"] == "2026-10-28"
+        pl["due_date"] == it0["date"]
+        and pl["deadline_date"] == it0["ddl_by_person"][0]["date"]
         and pl["labels"] == ["紧急次要"]
         and pl["priority"] == "P2"
     )
@@ -74,7 +75,7 @@ def test_mark_written_rechecks_version(env):
     run("reply", "b1", "#2 写入")
     key = run("write", "b1")[1]["actions"][0]["key"]
     t = copy.deepcopy(EX)
-    t["items"][1]["ddl"] = "2026-10-24"  # 修改后内容变了
+    t["items"][1]["ddl"] = bump_date(t["items"][1]["ddl"])  # 修改后内容变了
     (tmp / "w" / "b1" / "topics.json").write_text(json.dumps(t, ensure_ascii=False), encoding="utf-8")
     run("validate", "b1")
     rc, r = run("mark-written", "b1", key, "T1")
@@ -117,6 +118,6 @@ def test_assign_card_todoist_plan(env):
     pl = next(a for a in r["actions"] if a["kind"] == "parent")["payload"]
     assert pl["content"] == "指派：跟进活动报名表收集" and pl["deadline_date"] is None
     assert (
-        "小李 2026-10-23" in pl["description"]
+        f"小李 {EX['items'][1]['ddl_by_person'][0]['date']}" in pl["description"]
         and "审批人：示例用户（按规则：执行员是别人）" in pl["description"].splitlines()[0]
     )
