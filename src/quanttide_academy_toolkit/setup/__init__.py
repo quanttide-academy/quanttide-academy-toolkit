@@ -71,7 +71,11 @@ def main(argv=None):
     elif a[:1] == ["prefill"]:
         print(json.dumps(prefill(a[1], cfgarg), ensure_ascii=False))
     elif a[:1] == ["chats"]:
-        cs = collect.list_chats(config.load())
+        try:
+            cfg = config.load()
+        except FileNotFoundError:
+            cfg = {}
+        cs = collect.list_chats(cfg)
         print(json.dumps({"chats": [{**c, "selected": False} for c in cs]}, ensure_ascii=False))
     elif a[:1] == ["questions"]:
         print(json.dumps({"questions": QUESTIONS}, ensure_ascii=False))
